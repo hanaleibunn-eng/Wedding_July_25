@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checklist July 25</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #800020;    /* Bordeaux classique */
+	  --primary-dark: #4A0E0E;
+      --secondary: #D47386;  /* Un ton plus clair pour les éléments secondaires */
+      --success: #A3B18A;
+      --danger: #ff7675;
+      --bg: #4A0E0E;         /* Fond bordeaux sombre pour faire ressortir les cartes */
+      --card: #F5F5F5;    /* blanc gris */
+	  --card-input: #FDF7F7;    /* blanc rose */
+    }
+
+    body, button, input, select, textarea { 
+      font-family: Verdana, sans-serif; 
+    }
+
+    body { 
+      background: radial-gradient(circle, #5e0d11 0%, #4A0E0E 100%);
+      color: #3d2b2b;
+      max-width: 600px;
+      margin: auto; 
+      padding: 70px 15px 20px 15px;
+	  font-size: 14px;
+	  display: flow-root;
+    }
+
+	h1 { 
+      text-align: center; 
+      color: var(--card);
+      font-weight: 700;
+      margin-top: 0;      /* Remis à 0 car le body s'en occupe */
+      margin-bottom: 35px;
+      font-family: 'Playfair Display', 'Didot', 'Georgia', serif; 
+      font-size: 38px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+	
+	h1::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--card);
+      border-radius: 2px;
+    }
+	
+	#welcome-message {
+      animation: fadeIn 0.8s ease-in-out;
+      padding: 0 15px;
+	  font-family: 'Playfair Display', serif; 
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #add { 
+      background: var(--card);
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+	
+	#add label {
+      color: var(--primary);
+      font-weight: 600;
+	  font-size: 13px;
+    }
+	
+	input[type="radio"] {
+      accent-color: var(--primary-dark);
+      cursor: pointer;
+    }
+	
+	.moment-selection label {
+      color: var(--primary-dark);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input[type="text"] { 
+      padding: 8px 12px; 
+      border: 1px solid #dfe6e9; 
+      border-radius: 0;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    
+	input[type="text"], select { 
+     font-size: 13px;
+	 padding: 8px 12px;
+    }
+	
+    input[type="text"]:focus { border-color: var(--primary); }
+
+    button#addBtn { 
+      background: var(--primary); 
+      color: white; 
+      border: none; 
+      padding: 12px;
+      font-family: inherit; /* Pour bien prendre le Verdana */
+      font-size: 13px;	  
+      border-radius: 0; 
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    button#addBtn:active { transform: scale(0.98); }
+
+    /* Liste des tâches */
+    .item { 
+      background: var(--card);
+      margin-bottom: 12px;
+      padding: 15px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      transition: all 0.3s ease;
+    }
+
+    .item.done { opacity: 0.6; background: #f1f2f6; }
+
+    /* Grande Case à cocher personnalisée */
+    .checkbox-container {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    .checkbox-container input { display: none; }
+
+    .checkmark {
+      position: absolute;
+      top: 0; left: 0;
+      height: 30px; width: 30px;
+      background-color: #eee;
+      border-radius: 0;
+      transition: 0.3s;
+      border: 1.5px solid #dfe6e9;
+    }
+
+    .checkbox-container input:checked ~ .checkmark { background-color: var(--success); }
+
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 10px;
+      top: 5px;
+      width: 6px;
+      height: 12px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+    }
+
+    .checkbox-container input:checked ~ .checkmark:after { display: block; }
+
+    /* Infos de la tâche */
+    .item-content { flex: 1; }
+    .item-title { font-weight: 600; display: block; margin-bottom: 4px; font-size: 14px; }
+    .item-details { font-size: 12px; color: #636e72; display: flex; gap: 8px; flex-wrap: wrap; }
+    .badge { background: #f1f2f6; padding: 2px 8px; border-radius: 4px; }
+
+    .delete-btn { 
+      background: none; border: none; color: var(--primary); 
+      font-size: 20px; cursor: pointer; padding: 5px;
+    }
+
+    /* Couleur pour le Avant */
+    .item.avant { border-left: 15px solid #EBEBCA; }
+	
+	/* Couleur pour la Veille */
+    .item.veille { border-left: 15px solid #A3B18A; }
+
+    /* Couleur pour le Jour J */
+    .item.jourj { border-left: 15px solid #D69B8F; }
+
+    /* On ajuste un peu la carte pour que le bord coloré soit joli */
+    .item { border-left: 8px solid transparent; }
+
+    .badge { 
+      background: var(--card-input); 
+      padding: 2px 6px;
+      font-size: 11px;	  
+      border-radius: 4px;
+      cursor: pointer; 
+      transition: background 0.2s;
+      user-select: none; /* Évite de sélectionner le texte en cliquant vite */
+    }
+
+    .badge:hover {
+      background: #dfe6e9; /* Devient un peu plus foncé au survol */
+    }
+
+    .tabs {
+	  display: flex;
+	  gap: 4px;
+	  margin-bottom: 25px;
+	  width: 100%;
+	}
+	
+    .tab-btn { 
+      flex: 1;
+	  padding: 10px 4px;
+	  border: none;
+	  font-family: inherit;
+	  border-radius: 4px; 
+      background: #631313;
+	  cursor: pointer;
+	  font-weight: bold;
+	  color: rgba(255,255,255,0.8);
+	  font-size: 11px;
+	  text-transform: uppercase;
+	  white-space: nowrap;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  gap: 6px;
+	  transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+	
+    .tab-btn.active { background: var(--card) !important; color: var(--primary-dark) !important; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+
+    /* Le Badge de l'heure */
+    .time { 
+      background: var(--primary); 
+      color: white !important; 
+      padding: 7px 13px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      width: fit-content; /* S'adapte au texte */
+      margin-bottom: 10px;
+      display: inline-block;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+	
+	/* Style festif unique pour le badge de la soirée */
+    .time.time-party {
+      background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c) !important;
+      color: #4A0E0E !important; /* Texte sombre pour contrer le doré clair */
+      box-shadow: 0 4px 15px rgba(191, 149, 63, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+	
+	/* --- TITRES DE SECTIONS (Planning & Contacts) --- */
+    #timeline-section h3, 
+    #contact-section h3 {
+      color: var(--card-input);
+      text-align: center;
+      text-transform: uppercase;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      margin-bottom: 25px;
+      font-size: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding-bottom: 10px;
+    }
+
+    /* --- CARTES UNIFORMES (Planning & Contacts) --- */
+    .timeline-card, .contact-card { 
+      background: transparent; 
+      padding: 0; 
+      box-shadow: none; 
+    }
+
+    .timeline-list, .contact-list { 
+      list-style: none; 
+      padding: 0; 
+      margin: 0;
+    }
+
+    /* On applique le style "Carte" aux éléments de liste des deux sections */
+    .timeline-list li, 
+    .contact-list li { 
+      display: flex; 
+      flex-direction: column; 
+      background: var(--card); 
+      margin-bottom: 15px; 
+      padding: 15px; 
+      border-radius: 8px; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      border: 1px solid #eee; 
+      position: relative;
+      border-bottom: none; /* On enlève l'ancienne ligne de séparation grise */
+    }
+
+    /* Ajustement spécifique pour les noms dans Contacts (pour qu'ils ressemblent aux badges d'heures) */
+    .name { 
+      background: var(--primary); 
+      color: white !important; 
+      padding: 7px 13px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      width: fit-content;
+      margin-bottom: 10px;
+      display: inline-block;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .desc { 
+      font-size: 16px; /* Titre un peu plus grand */
+      color: var(--primary-dark);
+      font-weight: 800;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .desc-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.5;
+      border-top: 1px solid #eee;
+      padding-top: 8px;
+      margin-top: 5px;
+	}
+	
+	/* Troisième police pour les infos pratiques (Lieux, Tel) */
+    .info-line {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      color: #7f8c8d; /* Un gris plus doux pour ne pas surcharger */
+      text-transform: uppercase;
+      font-weight: 500;
+      display: block;
+      margin-top: 3px;
+    }
+
+    /* Style de la légende */
+    .legend-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+	  margin-top: 25px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 600;
+	  color: var(--card);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 45px;
+      height: 15px;
+      border-radius: 3px;
+	  flex-shrink: 0;
+    }
+
+    /* Couleurs identiques à tes bordures d'étiquettes */
+	.dot.avant { background-color: #EBEBCA; }
+    .dot.veille { background-color: #A3B18A; }
+    .dot.jourj { background-color: #D69B8F; }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow-x: hidden; /* Empêche le défilement horizontal parasite */
+    }
+	
+	footer {
+      text-align: center; /* Centre le texte */
+      padding: 20px;      /* Ajoute de l'espace autour */
+      font-size: 0.8rem;  /* Rend le texte plus petit (1rem est la taille normale) */
+      color: rgba(255, 255, 255, 0.7);
+      border-top: 1px solid #eee; /* Une petite ligne de séparation optionnelle */
+	  margin-top: 50px; /* Donne de l'air après la liste */
+      margin-bottom: 20px;
+    }
+
+    footer a {
+      color: #ffffff;     /* Couleur du lien mail */
+      text-decoration: underline;
+    }
+	
+	.countdown-box {
+      border: 5px solid;
+	  border-image-source: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+      border-image-slice: 1;
+      box-shadow: 0 0 15px rgba(191, 149, 63, 0.3); /* Une légère lueur externe */
+	  background: transparent;
+      padding: 18px;
+      border-radius: 6px;
+      min-width: 90px;
+      text-align: center;
+    }
+    .countdown-box span {
+      display: block;
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--card);
+    }
+	
+    .countdown-box small {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.8;
+    }
+	
+	.welcome-card {
+      background: rgba(255, 255, 255, 0.08); 
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 20px 10px; /* Padding réduit sur les côtés pour gagner de la place */
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); 
+      margin: 30px 0;
+      text-align: center;
+      transition: transform 0.3s ease;
+      max-width: 100%;
+    }
+	
+	/* --- SECTION GUEST LIST --- */
+    .guest-section {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 15px;
+      margin: 30px 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .guest-section h3 {
+      color: var(--primary);
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      text-transform: uppercase;
+      font-size: 20px;
+	  margin-top: 5px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .guest-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Deux colonnes auto */
+      gap: 10px;
+    }
+
+    .guest-list li {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: #333;
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    /* La puce personnalisée dorée */
+    .guest-list li::before {
+      content: "✦"; /* Un petit losange ou étoile */
+      color: #bf953f; /* Votre doré */
+      font-size: 10px;
+      margin-right: 10px;
+    }
+	
+	.guest-role {
+      font-size: 11px;
+      opacity: 0.6;
+      font-style: italic;
+	  font-weight: normal;
+      margin-left: 5px;
+	  color: var(--primary-dark);
+    }
+	
+	/* Style pour le badge spécifique avec pointillés */
+    .badge-special {
+      border: 2px dashed var(--card-input) !important;
+    }
+
+    /* Le fond opaque du pop-up */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* La boîte du pop-up */
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      width: 280px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    /* La grille de 9 carrés de rose */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .color-square {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 4px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1 onclick="showTab()" style="cursor: pointer;">Wedding - July 2025</h1>
+  
+  <div class="tabs">
+    <button class="tab-btn" onclick="showTab('timeline')">🕒 Timeline</button>
+    <button class="tab-btn" onclick="showTab('checklist')">📋 Checklist</button>  
+    <button class="tab-btn" onclick="showTab('contact')">👥 Contacts</button>
+  </div>
+
+  <div id="welcome-message" style="display: block;">
+    <div style="text-align: center; color: var(--card); margin-top: 35px;">
+      <p style="font-size: 16px; font-family: Verdana, sans-serif; margin-bottom: 10px;">Track the wedding preparations progress<br> <br></p>
+      <div class="welcome-card">
+        <p style="margin: 0; line-height: 1.6; letter-spacing: 1.5px; font-style: italic; font-size: 19px; color: var(--card);">
+          Hanaleï and Adil's Civil & Secular Wedding
+          <span style="font-weight: 400; font-size: 12px; font-family: Verdana, sans-serif; font-style: normal; letter-spacing: 0.2px; opacity: 0.9;"><br>Number of guests: <strong>90</strong></span>
+        </p>
+      </div>
+      <div id="countdown" style="display: flex; justify-content: center; font-family: Verdana, sans-serif; gap: 10px; margin-top: 35px;">
+        <div class="countdown-box">
+          <span id="days">00</span>
+          <small>Days</small>
+        </div>
+      </div>
+      <p style="margin-top: 35px; font-family: Verdana, sans-serif; font-size: 14px; opacity: 0.8;">📍 Larressingle & Moncrabeau<br> <br></p>
+    </div>
+  </div>
+  
+  <div id="add" style="display: none;">
+    <input type="text" id="newItem" placeholder="Task (e.g., Book the caterer...)">
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <input type="text" id="newPlace" placeholder="Location" style="flex: 1; min-width: 140px;">
+      <input type="text" id="newOwner" placeholder="In charge" style="flex: 1; min-width: 140px;">
+    </div>
+
+    <input type="password" id="authId" placeholder="Your name (Restricted access)" style="padding: 8px 12px; border: 1.5px solid var(--primary); outline: none; font-size: 13px;">
+
+    <div class="moment-selection" style="display: flex; justify-content: space-around; padding: 5px; margin-top: 0px;">
+      <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+        <input type="radio" name="moment" value="avant" checked style="transform: scale(1.5);"> Before
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+        <input type="radio" name="moment" value="veille" style="transform: scale(1.5);"> Day before
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+        <input type="radio" name="moment" value="jourj" style="transform: scale(1.5);"> D-Day
+      </label>
+    </div>
+
+    <button id="addBtn" onclick="addItem()">Add to list</button>
+  </div>
+
+  <div id="filter-container" style="margin-bottom: 20px; display: none;">
+  <input type="text" id="filterInput" onkeyup="filterTasks()" placeholder="Search..." 
+         style="width: 100%; padding: 10px; border-radius: 4px; border: none; box-sizing: border-box; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+  </div>
+
+  <div id="counter-container" style="display: none; text-align: center; margin-bottom: 15px; font-weight: bold; color: #F5F5F5 !important; font-size: 16px;">
+    <span id="completed-count">0</span> / <span id="total-count">0</span> tasks completed
+  </div>
+
+  <div class="legend-container" style="display: none;">
+    <div class="legend-item">
+      <span class="dot avant"></span> <span>Before</span>
+    </div>
+    <div class="legend-item">
+      <span class="dot veille"></span> <span>Day before</span>
+    </div>
+    <div class="legend-item">
+      <span class="dot jourj"></span> <span>D-Day</span>
+    </div>
+  </div>
+
+  <div id="list" style="display: none;"></div>
+
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+  import { 
+    getDatabase, ref, onValue, push, set, remove, update 
+  } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+
+  const firebaseConfig = {
+      apiKey: "AIzaSyCbpc_k-kDC5pN6A2MLmt_6jCJ0mnM_AC4",
+      authDomain: "checklist-mariage.firebaseapp.com",
+      databaseURL: "https://checklist-mariage-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "checklist-mariage",
+      storageBucket: "checklist-mariage.firebasestorage.app",
+      messagingSenderId: "436777851923",
+      appId: "1:436777851923:web:341755f72d59a6dff9b3e6",
+      measurementId: "G-T096M0YK86"
+    };
+    
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const listDiv = document.getElementById("list");
+
+  let currentItems = {};
+
+  // --- CONFIGURATION DES ACCÈS ---
+  const allowed = ["elsa", "adil", "ilona", "delphine", "mathilde", "juliette", "hanalei", "hanaleï", "maman", "papa", "chris", "marlene", "marlène", "christophe", "carole", "léandra", "leandra"];
+
+  function checkAuth() {
+    const code = prompt("Action protégée. Entrez votre prénom pour valider :");
+    return allowed.includes(code?.trim().toLowerCase());
+  }
+
+  function render(items) {
+    listDiv.innerHTML = "";
+    let lastMoment = null;
+
+    for (const id in items) {
+      const item = items[id];
+      
+      if (lastMoment !== null && lastMoment !== item.moment) {
+        const spacer = document.createElement("div");
+        spacer.style.height = "15px";
+        spacer.style.width = "100%";
+        listDiv.appendChild(spacer);
+      }
+      lastMoment = item.moment;
+
+      const row = document.createElement("div");
+      row.className = `item ${item.done ? 'done' : ''} ${item.moment || ''}`;
+
+      row.innerHTML = `
+        <label class="checkbox-container">
+          <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleItem('${id}', ${item.done})">
+          <span class="checkmark"></span>
+        </label>
+        <div class="item-content">
+          <span class="item-title" onclick="editTitle('${id}')" style="cursor: pointer;">
+            ${item.text}
+          </span>
+          <div class="item-details">
+            <span class="badge" onclick="editField('${id}', 'place')">
+              📍 ${item.place || '    '}
+            </span>
+            <span class="badge" onclick="editField('${id}', 'owner')">
+              👤 ${item.owner || '    '}
+            </span>
+          </div>
+        </div>
+        <button class="delete-btn" onclick="deleteItem('${id}')">&times;</button>
+      `;
+      listDiv.appendChild(row);
+    }
+  }
+
+  window.toggleItem = (id, currentStatus) => {
+    update(ref(db, "items/" + id), { done: !currentStatus });
+  };
+
+  window.deleteItem = (id) => {
+    if (!checkAuth()) return alert("Accès refusé.");
+    const text = currentItems[id].text;
+    if (confirm(`Supprimer "${text}" ?`)) remove(ref(db, "items/" + id));
+  };
+
+  window.editTitle = (id) => {
+    if (!checkAuth()) return alert("Accès refusé.");
+    const oldVal = currentItems[id].text;
+    const newVal = prompt("Modifier l'action :", oldVal);
+    if (newVal && newVal !== oldVal) update(ref(db, "items/" + id), { text: newVal });
+  };
+
+  window.editField = (id, field) => {
+    if (!checkAuth()) return alert("Accès refusé.");
+    const oldVal = currentItems[id][field] || "";
+    const label = field === 'place' ? 'le lieu' : 'le responsable';
+    const newVal = prompt(`Modifier ${label} :`, oldVal);
+    if (newVal !== null) update(ref(db, "items/" + id), { [field]: newVal });
+  };
+
+  window.addItem = function () {
+    const authInput = document.getElementById("authId");
+    if (!allowed.includes(authInput.value.trim().toLowerCase())) {
+        return alert("Désolé, ce prénom n'est pas autorisé pour ajouter des actions.");
+    }
+
+    const textInput = document.getElementById("newItem");
+    const placeInput = document.getElementById("newPlace");
+    const ownerInput = document.getElementById("newOwner");
+    const text = textInput.value.trim();
+    
+    if (!text) return alert("L'action ne peut pas être vide !");
+
+    const moment = document.querySelector('input[name="moment"]:checked')?.value || "avant";
+
+    push(ref(db, "items"), { 
+      text, 
+      place: placeInput.value.trim(), 
+      owner: ownerInput.value.trim(), 
+      moment, 
+      done: false, 
+      createdAt: Date.now() 
+    }).then(() => {
+      textInput.value = ""; placeInput.value = ""; ownerInput.value = "";
+      // Optionnel: authInput.value = ""; // Vider le code après ajout ou le laisser pour enchaîner
+    });
+  };
+
+  onValue(ref(db, "items"), snap => {
+    const data = snap.val() || {};
+    currentItems = data;
+    const entries = Object.entries(data);
+
+    const total = entries.length;
+    const completed = entries.filter(item => item[1].done).length;
+    document.getElementById("total-count").innerText = total;
+    document.getElementById("completed-count").innerText = completed;
+
+    const sortedEntries = entries.sort((a, b) => {
+      if (a[1].done !== b[1].done) return a[1].done - b[1].done;
+      const order = { 'avant': 1, 'veille': 2, 'jourj': 3 };
+      if (order[a[1].moment] !== order[b[1].moment]) return order[a[1].moment] - order[b[1].moment];
+      return a[1].text.localeCompare(b[1].text);
+    });
+
+    render(Object.fromEntries(sortedEntries));
+  });
+
+  window.filterTasks = function() {
+    const query = document.getElementById("filterInput").value.toLowerCase();
+    const items = document.querySelectorAll(".item");
+    items.forEach(item => {
+      const text = item.innerText.toLowerCase();
+      item.style.display = text.includes(query) ? "flex" : "none";
+    });
+  };
+  
+  window.showTab = function(tabName) {
+    const isChecklist = tabName === 'checklist';
+    const isTimeline = tabName === 'timeline';
+    const isContact = tabName === 'contact';
+    const isHome = !tabName;
+
+    document.getElementById('welcome-message').style.display = isHome ? 'block' : 'none';
+    
+    // Si tu as gardé la section guest-list, assure-toi que l'ID existe
+    const guestSec = document.getElementById('guest-list-section');
+    if (guestSec) guestSec.style.display = isHome ? 'block' : 'none';
+
+    document.getElementById('add').style.display = isChecklist ? 'flex' : 'none';
+    document.getElementById('filter-container').style.display = isChecklist ? 'block' : 'none';
+    document.getElementById('list').style.display = isChecklist ? 'block' : 'none';
+    document.querySelector('.legend-container').style.display = isChecklist ? 'flex' : 'none';
+    document.getElementById('counter-container').style.display = isChecklist ? 'block' : 'none';
+
+    document.getElementById('timeline-section').style.display = isTimeline ? 'block' : 'none';
+    document.getElementById('contact-section').style.display = isContact ? 'block' : 'none';
+
+    const btns = document.querySelectorAll('.tab-btn');
+    btns.forEach(btn => btn.classList.remove('active'));
+    if (isTimeline) btns[0].classList.add('active');
+    if (isChecklist) btns[1].classList.add('active');
+    if (isContact) btns[2].classList.add('active');
+  };
+  
+  function updateCountdown() {
+    const weddingDate = new Date("July 25, 2026 16:00:00").getTime();
+    const now = new Date().getTime();
+    const diff = weddingDate - now;
+    if (diff > 0) {
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      document.getElementById("days").innerText = d.toString().padStart(2, '0');
+    } else {
+      document.getElementById("welcome-message").innerHTML = "<h2 style='color:white; text-align:center;'>C'est le grand jour ! 🎉</h2>";
+    }
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+
+  window.openPinkModal = () => document.getElementById('pinkModal').style.display = 'flex';
+  window.closePinkModal = () => document.getElementById('pinkModal').style.display = 'none';
+
+</script>
+
+  <div id="timeline-section" style="display: none;">
+    <div class="timeline-card">
+      <h3>🕒 Planning of the day</h3>
+      <ul class="timeline-list">
+        <li>
+          <span class="time">1:30</span>
+      <div class="desc-container">
+        <span class="desc">Bride & Groom Preparations</span>
+        <span class="info-line">📍 Larressingle - Home</span>
+        <span class="note">Hair and Makeup for the bride.<br>Presence of Laetitia (hairstylist), Fanny (makeup artist), Mom, Léandra.</span>
+      </div>
+        </li>
+        <li>
+          <span class="time">3:30</span>
+      <div class="desc-container">
+        <span class="desc">Getting Ready</span>
+        <span class="info-line">📍 Larressingle - Home</span>
+        <span class="note">Bridesmaids and Best Men arrival at the house.<br>Photographer present for the bride's final preparations (to be confirmed).</span>
+      </div>
+        </li>
+        <li>
+      <span class="time">4:00</span>
+      <div class="desc-container">
+        <span class="desc">Civil Ceremony</span>
+        <span class="info-line">📍 Larressingle - Town Hall</span>
+        <span class="note">Distribution of fans and umbrellas upon guest arrival if necessary.<br>Groom's arrival around 4:00 PM.<br> Bride's arrival around 4:15 PM.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time">4:45</span>
+      <div class="desc-container">
+        <span class="desc">Couple's Photos</span>
+        <span class="info-line">📍 Larressingle - Castle<br>📞 Photographer - David : <a href="tel:0684366712" style="color: inherit; text-decoration: none; font-weight: bold;">06 84 36 67 12</a></span>
+        <span class="note">Guests depart for "La Palombière d'Henri" in Moncrabeau - 20-minute drive.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time">5:45</span>
+      <div class="desc-container">
+        <span class="desc">Secular Ceremony</span>
+        <span class="info-line">📍 Palombière d'Henri</span>
+        <span class="note">Guest welcome with background music.<br>Introduction by Tony - 5 min.<br> Speeches from witnesses and parents - 15 min.<br> Exchange of rings, vows, symbolic ritual - 10 min.<br>Closing remarks by Tony and musical exit of the newlyweds - 5 min.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time">6:30</span>
+      <div class="desc-container">
+        <span class="desc">Cocktail Hour</span>
+        <span class="info-line">📍 Palombière d'Henri<br>📞 Saxophonist - Pierre : <a href="tel:0780239409" style="color: inherit; text-decoration: none; font-weight: bold;">07 80 23 94 09</a></span>
+        <span class="note">Cocktails and appetizers (4 servers).<br>Atmosphere music: saxophonist.<br>Activities: photos with the photographer, pétanque, guest wall, polaroid.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time">8:30</span>
+      <div class="desc-container">
+        <span class="desc">Dinner</span>
+        <span class="info-line">📞 Caterer - M. Ducousseau : <a href="tel:0687129468" style="color: inherit; text-decoration: none; font-weight: bold;">06 87 12 94 68</a></span>
+        <span class="note">Main course + Cheese platter.<br>Speeches from friends and games.<br>Background music.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time">10:15</span>
+      <div class="desc-container">
+        <span class="desc">First Dance</span>
+        <span class="info-line">📍 Palombière d'Henri</span>
+        <span class="note">Dance with Dad and Adil.<br>In charge of music: Léandra.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time">10:30</span>
+      <div class="desc-container">
+        <span class="desc">Wedding Cake</span>
+        <span class="info-line">📞 Pastry Chef - C. Garnier : <a href="tel:0562281133" style="color: inherit; text-decoration: none; font-weight: bold;">05 62 28 11 33</a></span>
+        <span class="note">Direct delivery by the pastry chef.<br>Dress change for the bride.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time time-party">11:00</span>
+      <div class="desc-container">
+        <span class="desc">PARTY</span>
+        <span class="info-line">📍 Palombière d'Henri</span>
+        <span class="note">Surprise from the Bridesmaids and Witnesses.<br>Evening playlist.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time">Sunday 11:00</span>
+      <div class="desc-container">
+        <span class="desc">Brunch</span>
+        <span class="info-line">📍 Palombière d'Henri</span>
+        <span class="note">Sunday Brunch with all guests.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div id="contact-section" style="display: none;">
+    <div class="contact-card">
+      <h3>Coordinators</h3>
+      <ul class="contact-list">
+        <li>
+          <span class="name">Dad</span>
+      <div class="desc-container">
+        <span class="desc">In charge of Sound & Cables</span>
+        <span class="info-line">📞 07 48 14 76 75</span>
+        <span class="note">Set up the speaker and prepare the playlist for the Town Hall with Xavier.<br>Set up speakers at "La Palombière d'Henri".<br>Test microphone, extension cords, and evening lighting.</span>
+      </div>
+        </li>
+        <li>
+      <span class="name">Léandra</span>
+      <div class="desc-container">
+        <span class="desc"><em>Maid of Honor</em><br>In charge of Playlist</span>
+        <span class="info-line">📞 06 33 74 73 83</span>
+        <span class="note"><br>Play music for the secular ceremony, dinner, first dance, and surprise dance.</span>
+          </div>
+        </li>
+        <li>
+          <span class="name">Ilona</span>
+      <div class="desc-container">
+        <span class="desc"><em>Maid of Honor</em><br>In charge of Go Pro</span>
+        <span class="info-line">📞 06 04 16 24 01</span>        
+        <span class="note">Set up the tripod and Go Pro for secular ceremony videos, first dance, and party dance.<br>Charge the Go Pro between the daytime and evening.</span>
+      </div>
+        </li>
+        <li>
+          <span class="name">Saban</span>
+      <div class="desc-container">
+        <span class="desc"><em>Best Man</em><br>In charge of Wedding Rings</span>
+        <span class="info-line">📞 07 81 79 71 80</span>
+        <span class="note">Bring the rings to the couple during the secular ceremony.</span>
+          </div>
+        </li>
+        <li>
+          <span class="name badge-special" onclick="openPinkModal()" style="cursor:pointer;">Bridesmaids</span>
+      <div class="desc-container">
+        <span class="desc">In charge of Greeting & Timing</span>
+        <span class="note">Greet guests and guide them to the venue after the town hall.<br>Welcome the saxophonist, caterer, and pastry chef.<br>Invite guests to take their seats for dinner.<br>Bring out the wedding cake after the first dance.</span>
+          </div>
+        </li>
+        <li>
+          <span class="name">Tony</span>
+      <div class="desc-container">
+        <span class="desc">Secular Ceremony Officiant</span>
+        <span class="info-line">📞 06 80 16 97 51</span>
+        <span class="note">Speech prepared in advance.<br>Announce the cocktail hour and the dinner to follow.</span>
+          </div>
+        </li>
+        <li>
+          <span class="name">Mom</span>
+      <div class="desc-container">
+        <span class="desc">In charge of Flowers & Brunch</span>
+        <span class="info-line">📞 06 60 59 68 68</span>
+        <span class="note">Bridal bouquet.<br>Pizza, pastries, fruits, and drinks for the brunch.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div id="pinkModal" class="modal-overlay" onclick="closePinkModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <h4 style="margin-top:0; color:var(--primary)">Dress Code</h4>
+      <div class="color-grid">
+        <div class="color-square" style="background: #FFB7C5;"></div>
+        <div class="color-square" style="background: #F49AC2;"></div>
+        <div class="color-square" style="background: #FF91A4;"></div>
+        <div class="color-square" style="background: #FC8EAC;"></div>
+        <div class="color-square" style="background: #F08080;"></div>
+        <div class="color-square" style="background: #DE5D83;"></div>
+        <div class="color-square" style="background: #C93886;"></div>
+        <div class="color-square" style="background: #C21E56;"></div>
+        <div class="color-square" style="background: #800844;"></div>
+      </div>
+      <button onclick="closePinkModal()" style="margin-top:20px; border:none; background:var(--primary); color:white; padding:8px 15px; cursor:pointer; border-radius:5px;">Fermer</button>
+    </div>
+  </div>
+  
+  <div id="guest-list-section" class="guest-section">
+    <h3>✨ Guest List</h3>
+    <ul class="guest-list">
+      <li style="color: #808080;">Adil <span class="guest-role">(GROOM)</span></li>
+      <li>Hanaleï <span class="guest-role">(BRIDE)</span></li>
+      <li style="color: #808080;">Amina 🌱 <span class="guest-role">(Mom)</span></li>
+      <li>Carole <span class="guest-role">(Mom)</span></li>
+      <li>Christophe <span class="guest-role">(Dad)</span></li>
+      <li>Léandra <span class="guest-role">(Sister)</span></li>
+      <li style="color: #808080;">Sofiane <span class="guest-role">(Brother)</span></li>
+      <li>Ilona <span class="guest-role">(Maid of Honor)</span></li>
+      <li>Maxime</li>
+      <li style="color: #808080;">Saban 🌱 <span class="guest-role">(Best Man)</span></li>
+      <li style="color: #808080;">Nora 🌱</li>
+      <li style="color: #808080;">Myriam 🌱 <span class="guest-role">(Aunt)</span></li>
+      <li style="color: #808080;">Zineb 🌱 <span class="guest-role">(Aunt)</span></li>
+      <li style="color: #808080;">Rhita 🌱 <span class="guest-role">(Cousin)</span></li>
+      <li>Anthony B. <span class="guest-role">(Uncle)</span></li>
+      <li>Gwen B.</li>
+      <li>Indiana <span class="guest-role">(Cousin)</span></li>
+      <li>Marc <span class="guest-role">(Grandpa)</span></li>
+      <li>Rachel</li>
+      <li>Annie <span class="guest-role">(Grandma)</span></li>
+      <li>Hervé <span class="guest-role">(Uncle)</span></li>
+      <li>Isabelle</li>
+      <li>Thibault and Angelia</li>
+      <li>Mathilde <span class="guest-role">(Bridesmaid)</span></li>
+      <li>Vincent</li>
+      <li>Elsa <span class="guest-role">(Bridesmaid)</span></li>
+      <li>Thibault</li>
+      <li>Marlène <span class="guest-role">(Bridesmaid)</span></li>
+      <li>Antoine Bu</li>
+      <li>Delphine <span class="guest-role">(Bridesmaid)</span></li>
+      <li>Benjamin</li>
+      <li>Juliette <span class="guest-role">(Bridesmaid)</span></li>
+      <li>Kevin</li>
+      <li style="color: #808080;">Simon</li>
+      <li style="color: #808080;">Simon's Daughter</li>
+      <li style="color: #808080;">Simon's Daughter</li>
+      <li>Stéphanie</li>
+      <li>Julien</li>
+      <li>Loralie</li>
+      <li>Maxandre</li>
+      <li>Marilyn</li>
+      <li>Christian</li>
+      <li>Carla</li>
+      <li>Anthony and Célia</li>
+      <li>Raymond</li>
+      <li>Corinne</li>
+      <li>Alexis</li>
+      <li>Julien</li>
+      <li>Martine</li>
+      <li>Mathieu</li>
+      <li>Marie-Noëlle</li>
+      <li>Paule</li>
+      <li>Olivier</li>
+      <li>Laurent</li>
+      <li style="color: #808080;">Karen</li>
+      <li style="color: #808080;">Abdoul</li>
+      <li style="color: #808080;">Moncef and his wife</li>
+      <li style="color: #808080;">Noussair</li>
+      <li style="color: #808080;">Zeineb 🌱</li>
+      <li style="color: #808080;">Mariam 🌱</li>
+      <li style="color: #808080;">Lucas</li>
+      <li style="color: #808080;">Alexandros</li>
+      <li style="color: #808080;">Brice</li>
+      <li>Noémie and Nico</li>
+      <li>Nina and Egon</li>
+      <li>Maïlys and P-G.</li>
+      <li>Gwen and Hugo</li>
+      <li>Justine and Malo</li>
+      <li>Estelle</li>
+      <li>Pauline and William</li>
+      <li>Wijdane and Brice</li>
+      <li>Soleil</li>
+      <li>Manon</li>
+      <li>Clara and Youssef</li>
+      <li>Mohammed 🌱</li>
+      <li>Taha 🌱</li>
+      <li>Mathilde B.</li>
+      <li>Mahoua and Axel</li>
+    </ul>
+    <p style="text-align:center; font-size: 12px; color: #999; margin-top: 15px; font-style: italic;">Total: 90 people<br> <br> 
+    </p>
+    <p class="guest-role"><span>Invited to the ceremony and cocktail hour:</span></p>
+    <ul class="guest-list">
+      <li>Aline and Gilou</li>
+      <li>Luc and Sandrine</li>
+      <li>Christophe and Barbara</li>
+      <li>Sandrine</li>
+      <li>Alain and Solange</li>
+      <li>Anne and Philippe</li>
+      <li>Philippe and Nathalie</li>
+      <li>Bénédicte and Alex</li>
+      <li>Stéphane and Sandrine</li>      
+    </ul>
+  </div>	
+  
+  <footer>
+    <p>&copy;2026 Hanaleï et Adil<br>Tous droits réservés</p>
+    <p>Contact : <a href="mailto:votre@email.com">hanalei.bunn@gmail.com</a><br>Tél Hanaleï : <a href="tel:+33600000000">06 12 92 50 22</a><br>Tél Adil : <a href="tel:+33600000000">06 15 82 41 22</a></p>
+  </footer>
+
+</body>
+</html>
