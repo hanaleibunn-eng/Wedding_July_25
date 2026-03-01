@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checklist July 25</title>
+  <title>Wedding July 26</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #800020;    /* Bordeaux classique */
-	  --primary-dark: #4A0E0E;
-      --secondary: #D47386;  /* Un ton plus clair pour les éléments secondaires */
-      --success: #A3B18A;
-      --danger: #ff7675;
-      --bg: #4A0E0E;         /* Fond bordeaux sombre pour faire ressortir les cartes */
-      --card: #F5F5F5;    /* blanc gris */
-	  --card-input: #FDF7F7;    /* blanc rose */
+      --primary: #847949;    /* Vert olive */
+	  --primary-dark: #5C5539;    /* Vert foncé */
+      --secondary: #99ABA6;    /* Bleu */
+      --success: #D2BF81;  /* Jaune des tables */
+      --card: #FCF9F2;    /* Ivoire */
+	  --card-input: #BC6C4D;    /* Terracota */
     }
 
     body, button, input, select, textarea { 
@@ -22,11 +20,11 @@
     }
 
     body { 
-      background: radial-gradient(circle, #5e0d11 0%, #4A0E0E 100%);
+      background: var(--primary-dark);
       color: #3d2b2b;
       max-width: 600px;
-      margin: auto; 
-      padding: 70px 15px 20px 15px;
+      margin: 0 auto;
+      padding: 50px 15px 20px 15px;
 	  font-size: 14px;
 	  display: flow-root;
     }
@@ -35,15 +33,14 @@
       text-align: center; 
       color: var(--card);
       font-weight: 700;
-      margin-top: 0;      /* Remis à 0 car le body s'en occupe */
-      margin-bottom: 35px;
+      margin: 0;
+	  margin-bottom: 25px;
       font-family: 'Playfair Display', 'Didot', 'Georgia', serif; 
-      font-size: 38px;
+      font-size: 32px;
       letter-spacing: 2px;
-      text-transform: uppercase;
       position: relative;
       padding-bottom: 15px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      text-shadow: none;
         }
 	
 	h1::after {
@@ -92,14 +89,14 @@
     }
 	
 	.moment-selection label {
-      color: var(--primary-dark);
+      color: var(--success);
       font-size: 14px;
       font-weight: bold;
     }
 
     input[type="text"] { 
       padding: 8px 12px; 
-      border: 1px solid #dfe6e9; 
+      border: 1px solid var(--card); 
       border-radius: 0;
       outline: none;
       transition: border-color 0.3s;
@@ -113,7 +110,7 @@
     input[type="text"]:focus { border-color: var(--primary); }
 
     button#addBtn { 
-      background: var(--primary); 
+      background: var(--success); 
       color: white; 
       border: none; 
       padding: 12px;
@@ -190,20 +187,15 @@
       font-size: 20px; cursor: pointer; padding: 5px;
     }
 
-    /* Couleur pour le Avant */
-    .item.avant { border-left: 15px solid #EBEBCA; }
-	
-	/* Couleur pour la Veille */
-    .item.veille { border-left: 15px solid #A3B18A; }
-
-    /* Couleur pour le Jour J */
-    .item.jourj { border-left: 15px solid #D69B8F; }
+    .item.avant { border-left: 15px solid var(--primary); }
+    .item.veille { border-left: 15px solid var(--success); }
+    .item.jourj { border-left: 15px solid var(--card-input); }
 
     /* On ajuste un peu la carte pour que le bord coloré soit joli */
     .item { border-left: 8px solid transparent; }
 
     .badge { 
-      background: var(--card-input); 
+      background: var(--card); 
       padding: 2px 6px;
       font-size: 11px;	  
       border-radius: 4px;
@@ -229,10 +221,10 @@
 	  border: none;
 	  font-family: inherit;
 	  border-radius: 4px; 
-      background: #631313;
+      background: var(--card);
 	  cursor: pointer;
 	  font-weight: bold;
-	  color: rgba(255,255,255,0.8);
+	  color: var(--success);
 	  font-size: 11px;
 	  text-transform: uppercase;
 	  white-space: nowrap;
@@ -243,8 +235,6 @@
 	  transition: all 0.3s ease;
       border: 1px solid rgba(255,255,255,0.3);
     }
-	
-    .tab-btn.active { background: var(--card) !important; color: var(--primary-dark) !important; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
     /* Le Badge de l'heure */
     .time { 
@@ -263,7 +253,7 @@
 	/* Style festif unique pour le badge de la soirée */
     .time.time-party {
       background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c) !important;
-      color: #4A0E0E !important; /* Texte sombre pour contrer le doré clair */
+      color: var(--primary-dark) !important; /* Texte sombre pour contrer le doré clair */
       box-shadow: 0 4px 15px rgba(191, 149, 63, 0.4);
       border: 1px solid rgba(255, 255, 255, 0.5);
     }
@@ -271,7 +261,7 @@
 	/* --- TITRES DE SECTIONS (Planning & Contacts) --- */
     #timeline-section h3, 
     #contact-section h3 {
-      color: var(--card-input);
+      color: var(--card);
       text-align: center;
       text-transform: uppercase;
       font-family: 'Playfair Display', serif;
@@ -386,9 +376,9 @@
     }
 
     /* Couleurs identiques à tes bordures d'étiquettes */
-	.dot.avant { background-color: #EBEBCA; }
-    .dot.veille { background-color: #A3B18A; }
-    .dot.jourj { background-color: #D69B8F; }
+	.dot.avant { background-color: var(--primary); }
+    .dot.veille { background-color: var(--success); }
+    .dot.jourj { background-color: var(--card-input); }
 
     * {
       box-sizing: border-box;
@@ -396,21 +386,6 @@
 
     body {
       overflow-x: hidden; /* Empêche le défilement horizontal parasite */
-    }
-	
-	footer {
-      text-align: center; /* Centre le texte */
-      padding: 20px;      /* Ajoute de l'espace autour */
-      font-size: 0.8rem;  /* Rend le texte plus petit (1rem est la taille normale) */
-      color: rgba(255, 255, 255, 0.7);
-      border-top: 1px solid #eee; /* Une petite ligne de séparation optionnelle */
-	  margin-top: 50px; /* Donne de l'air après la liste */
-      margin-bottom: 20px;
-    }
-
-    footer a {
-      color: #ffffff;     /* Couleur du lien mail */
-      text-decoration: underline;
     }
 	
 	.countdown-box {
@@ -439,10 +414,10 @@
     }
 	
 	.welcome-card {
-      background: rgba(255, 255, 255, 0.08); 
+      background: var(--success); 
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      padding: 20px 10px; /* Padding réduit sur les côtés pour gagner de la place */
+      padding: 30px 10px; /* Padding réduit sur les côtés pour gagner de la place */
       border-radius: 20px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); 
       margin: 30px 0;
@@ -483,7 +458,6 @@
     .guest-list li {
       font-family: 'Montserrat', sans-serif;
       font-size: 14px;
-      color: #333;
       padding: 5px 0;
       display: flex;
       align-items: center;
@@ -506,9 +480,9 @@
 	  color: var(--primary-dark);
     }
 	
-	/* Style pour le badge spécifique avec pointillés */
     .badge-special {
-      border: 2px dashed var(--card-input) !important;
+      background: linear-gradient(45deg, #800844 0%, #DE5D83 20%, #800844 40%, #F49AC2 50%, #800844 60%, #DE5D83 80%, #800844 100%) !important;
+      color: #ffffff !important;
     }
 
     /* Le fond opaque du pop-up */
@@ -546,25 +520,167 @@
       aspect-ratio: 1;
       border-radius: 4px;
     }
+	
+	.btn-moodboard {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.2);
+      margin: 20px 0;
+    }
+
+    .btn-moodboard:hover {
+      background-color: #F5F5F5;
+      color: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+	
+	/* --- SECTION PLAN DE TABLE --- */
+    .seating-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .table-card {
+      background: var(--secondary);
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .table-card.honneur {
+      background: var(--card-input);
+	  border-top: none;
+      grid-column: 1 / -1; /* Prend toute la largeur sur grand écran */
+    }
+
+    .table-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--card);
+      font-size: 18px;
+      margin-bottom: 12px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+    }
+
+    .seats-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .seat {
+      font-size: 12px;
+      background: var(--card);
+      border: 1px solid #eee;
+      padding: 6px 2px;
+      text-align: center;
+      border-radius: 4px;
+      min-height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .seat.empty {
+      border: 1px dashed #ccc;
+      color: #ccc;
+    }
+	
+	/* Cette classe rend la case invisible mais lui fait garder sa place dans la grille */
+    .seat.center-hole {
+      visibility: hidden;
+      border: none;
+      background: none;
+    }
+	
+	.seat.center-cercle {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+	  width: 40px;           /* Ajustez la taille selon votre besoin */
+      height: 40px;
+      border-radius: 50%;    
+      margin: 0 auto;
+      background: var(--card);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	}
+	
+	/* Masquer toutes les tables sauf la table d'honneur */
+    .seating-grid .table-card:not(.honneur) {
+        display: none;
+    }
+	
+    .grid-tabs {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-left: -15px;      /* Annule le padding gauche du body */
+      margin-right: -15px;     /* Annule le padding droit du body */
+      width: calc(100% + 30px);
+	  position: sticky;
+      top: 0;              /* Se colle au bord haut */
+      z-index: 1000;       /* Reste au-dessus du contenu qui défile */
+      background: var(--primary-dark);
+    }
+	
+    .grid-tabs .tab-btn {
+	  border-radius: 0;
+      width: 100% !important;
+      font-size: 11px; /* Légèrement réduit pour mobile */
+      padding: 8px 2px;
+      white-space: nowrap;
+    }
+	
+	.tab-btn.active { background: var(--success) !important; color: #ffffff !important; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+	
+	footer {
+      text-align: center; /* Centre le texte */
+      padding: 0;
+      font-size: 0.8rem;  /* Rend le texte plus petit (1rem est la taille normale) */
+      color: rgba(255, 255, 255, 0.7);
+      border-top: 1px solid #eee; /* Une petite ligne de séparation optionnelle */
+	  margin-top: 50px; /* Donne de l'air après la liste */
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
 
   </style>
 </head>
 <body>
 
-  <h1 onclick="showTab()" style="cursor: pointer;">Wedding - July 2026</h1>
+  <header class="main-header">
+    <h1 onclick="showTab()" style="cursor: pointer;">WEDDING H x A</h1>
+  </header>
   
-  <div class="tabs">
-    <button class="tab-btn" onclick="showTab('timeline')">🕒 Timeline</button>
-    <button class="tab-btn" onclick="showTab('checklist')">📋 Checklist</button>  
-    <button class="tab-btn" onclick="showTab('contact')">👥 Contacts</button>
+  <div class="tabs grid-tabs">
+    <button class="tab-btn" onclick="showTab('timeline')">Schedule</button>
+    <button class="tab-btn" onclick="showTab('checklist')">Checklist</button>
+	<button class="tab-btn" onclick="showTab('contact')">Contacts</button>
+    <button class="tab-btn" onclick="showTab('logistique')">Logistic</button>
+	<button class="tab-btn" onclick="showTab('guestlist')">Guests</button>
+    <button class="tab-btn" onclick="showTab('seating')">Tables</button>
   </div>
 
   <div id="welcome-message" style="display: block;">
     <div style="text-align: center; color: var(--card); margin-top: 35px;">
-      <p style="font-size: 16px; font-family: Verdana, sans-serif; margin-bottom: 10px;">Track the wedding preparations progress<br> <br></p>
+	  <p style="font-size: 14px; font-family: Verdana, sans-serif; margin-bottom: 15px;">Saturday 25th of July, 2026<br> </p>
       <div class="welcome-card">
-        <p style="margin: 0; line-height: 1.6; letter-spacing: 1.5px; font-style: italic; font-size: 19px; color: var(--card);">
-          Hanaleï and Adil's Wedding
+        <p style="margin: 0; line-height: 1.6; letter-spacing: 1.5px; font-style: italic; font-size: 20px; color: var(--card);">
+          Civil and Secular Wedding of Hanalei and Adil
           <span style="font-weight: 400; font-size: 12px; font-family: Verdana, sans-serif; font-style: normal; letter-spacing: 0.2px; opacity: 0.9;"><br>Number of guests: <strong>90</strong></span>
         </p>
       </div>
@@ -575,57 +691,644 @@
         </div>
       </div>
       <p style="margin-top: 35px; font-family: Verdana, sans-serif; font-size: 14px; opacity: 0.8;">📍 Larressingle & Moncrabeau<br> <br></p>
+	    <div style="margin-top: 25px; text-align: center;">
+          <img src="https://www.domainedesaussignac.com/wp-content/uploads/2014/07/larressingle-arriv%C3%A9e.jpg" alt="Photo Mariage" style="width: 100%; max-width: 600px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+		<div style="margin-top: 25px; text-align: center;">
+          <img src="https://3.bp.blogspot.com/-hT7W-TnX2lU/VyRrzCpdAVI/AAAAAAAADNQ/LFgkyhtO2IILl3Bx5yGNVMyRmdICvY1dgCKgB/s1600/Larressingle-Gers%2B%252825%2529.jpg" alt="Photo Mariage" style="width: 100%; max-width: 600px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+		<div style="margin-top: 25px; text-align: center;">
+          <img src="https://www.la-palombiere-d-henri.com/assets/img/portfolio-2z.jpg" alt="Photo Mariage" style="width: 100%; max-width: 600px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+		<div style="margin-top: 25px; text-align: center;">
+          <img src="https://cdt47.media.tourinsoft.eu/upload/exterieur-3-5.jpg?width=1200" alt="Photo Mariage" style="width: 100%; max-width: 600px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+		<div style="margin-top: 25px; text-align: center;">
+          <img src="https://la-palombiere-d-henri.com/assets/img/portfolio-8z.jpg" alt="Photo Mariage" style="width: 100%; max-width: 600px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+		<div style="margin-top: 25px; text-align: center;">
+          <img src="https://www.la-palombiere-d-henri.com/assets/img/portfolio-4z.jpg" alt="Photo Mariage" style="width: 100%; max-width: 600px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
     </div>
   </div>
   
+  <div id="timeline-section" style="display: none;">
+    <div class="timeline-card">
+      <h3>Day Schedule</h3>
+      <ul class="timeline-list">
+        <li>
+          <span class="time">1:30 pm</span>
+	  <div class="desc-container">
+	    <span class="desc">Bride & Groom Preparation</span>
+		<span class="info-line">📍 Larressingle - House</span>
+        <span class="note">Hair and Makeup for the bride.<br>Presence of Laetitia (hairstylist), Fanny (makeup artist), Mom, Léandra.</span>
+	  </div>
+        </li>
+        <li>
+          <span class="time">3:30 pm</span>
+	  <div class="desc-container">
+        <span class="desc">Getting Ready</span>
+		<span class="info-line">📍 Larressingle - House</span>
+	    <span class="note">Arrival of Bridesmaids and Witnesses at the house.<br>Photographer present for the bride's final preparations (to be confirmed).</span>
+	  </div>
+        </li>
+        <li>
+	  <span class="time">4 pm</span>
+	  <div class="desc-container">
+	    <span class="desc">Civil Ceremony</span>
+		<span class="info-line">📍 Larressingle - Town Hall</span>
+	    <span class="note">Distribution of fans and parasols upon guest arrival if necessary.<br>Groom's arrival around 4:00 pm.<br> Bride's arrival around 4:15 pm.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time">4:45 pm</span>
+	  <div class="desc-container">
+	    <span class="desc">Couple's Photos</span>
+		<span class="info-line">📍 Larressingle - Castle<br>📞 Photographer - David: <a href="tel:0684366712" style="color: inherit; text-decoration: none; font-weight: bold;">06 84 36 67 12</a></span>
+	    <span class="note">Guests depart for Henri's Palombière in Moncrabeau - 20-minute drive.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time">5:45 pm</span>
+	  <div class="desc-container">
+	    <span class="desc">Secular Ceremony</span>
+		<span class="info-line">📍 Henri's Palombière</span>
+	    <span class="note">Guest welcome with background music.<br>Introduction by Tony - 5 min.<br> Speeches by witnesses and parents - 15 min.<br> Exchange of rings, vows, symbolic ritual - 10 min.<br>Closing remarks by Tony and musical exit of the couple - 5 min.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time">6:30 pm</span>
+	  <div class="desc-container">
+	    <span class="desc">Cocktail Hour</span>
+		<span class="info-line">📍 Henri's Palombière<br>📞 Saxophonist - Pierre: <a href="tel:0780239409" style="color: inherit; text-decoration: none; font-weight: bold;">07 80 23 94 09</a></span>
+	    <span class="note">Cocktail and appetizers (4 servers).<br>Atmospheric music: saxophonist.<br>Activities: photos with the photographer, pétanque, guest wall, polaroid.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time">8:30 pm</span>
+	  <div class="desc-container">
+	    <span class="desc">Dinner</span>
+		<span class="info-line">📞 Caterer - Mr. Ducousseau: <a href="tel:0687129468" style="color: inherit; text-decoration: none; font-weight: bold;">06 87 12 94 68</a></span>
+	    <span class="note">Main course + Cheese plate.<br>Speeches from friends and games.<br>Background music.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time">10:15 pm</span>
+	  <div class="desc-container">
+	    <span class="desc">First Dance</span>
+		<span class="info-line">📍 Henri's Palombière</span>
+	    <span class="note">Dance with Dad and Adil.<br>Music coordinator: Léandra.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time">10:30 pm</span>
+	  <div class="desc-container">
+	    <span class="desc">Wedding Cake</span>
+		<span class="info-line">📞 Pastry Chef - C. Garnier: <a href="tel:0562281133" style="color: inherit; text-decoration: none; font-weight: bold;">05 62 28 11 33</a></span>
+	    <span class="note">Direct delivery by the pastry chef.<br>Dress change for the bride.</span>
+          </div>
+        </li>
+        <li>
+          <span class="time time-party" onclick="openSoireeModal()" style="cursor: pointer;">11:00 pm</span>
+	  <div class="desc-container">
+	    <span class="desc">PARTY</span>
+		<span class="info-line">📍 Henri's Palombière</span>
+          </div>
+        </li>
+		<li>
+          <span class="time">Sunday 11 am</span>
+	  <div class="desc-container">
+	    <span class="desc">Brunch</span>
+		<span class="info-line">📍 Henri's Palombière</span>
+	    <span class="note">Sunday brunch with all interested guests.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+    <div id="soireeModal" class="modal-overlay" onclick="closeSoireeModal()">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <h2 style="font-family: 'Playfair Display', serif; color: var(--primary);">Night Program</h2>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 5px 0;">
+    
+        <p style="font-family: Verdana, sans-serif; font-size: 14px; text-align: left; line-height: 1.6;">
+          <strong>On the festivities menu:</strong><br><br>
+          💃 Surprise dancefloor opening<br>
+          🎧 Playlist made by guests<br>
+          🥂 Drinks & pastries<br>
+          📸 GoPro circulating throughout the night<br>
+        </p>
+
+        <button onclick="closeSoireeModal()" style="margin-top: 20px; padding: 10px 20px; background: var(--primary); color: white; border: none; border-radius: 5px; cursor: pointer;">Close</button>
+      </div>
+    </div>
+  
   <div id="add" style="display: none;">
-    <input type="text" id="newItem" placeholder="Task (e.g., Book the caterer...)">
+    <input type="text" id="newItem" placeholder="Action (e.g., Book the caterer...)">
     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
       <input type="text" id="newPlace" placeholder="Location" style="flex: 1; min-width: 140px;">
-      <input type="text" id="newOwner" placeholder="In charge" style="flex: 1; min-width: 140px;">
+      <input type="text" id="newOwner" placeholder="Responsible person" style="flex: 1; min-width: 140px;">
     </div>
 
-    <input type="password" id="authId" placeholder="Your name (Restricted access)" style="padding: 8px 12px; border: 1.5px solid var(--primary); outline: none; font-size: 13px;">
+    <input type="password" id="authId" placeholder="Your first name (Restricted access)" style="padding: 8px 12px; border: 1.5px solid var(--success); outline: none; font-size: 13px;">
 
     <div class="moment-selection" style="display: flex; justify-content: space-around; padding: 5px; margin-top: 0px;">
       <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
         <input type="radio" name="moment" value="avant" checked style="transform: scale(1.5);"> Before
       </label>
       <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-        <input type="radio" name="moment" value="veille" style="transform: scale(1.5);"> Day before
+        <input type="radio" name="moment" value="veille" style="transform: scale(1.5);"> The day before
       </label>
       <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-        <input type="radio" name="moment" value="jourj" style="transform: scale(1.5);"> D-Day
+        <input type="radio" name="moment" value="jourj" style="transform: scale(1.5);"> D Day
       </label>
     </div>
 
-    <button id="addBtn" onclick="addItem()">Add to list</button>
+    <button id="addBtn" onclick="addItem()">Add to the list</button>
   </div>
 
-  <div id="filter-container" style="margin-bottom: 20px; display: none;">
-  <input type="text" id="filterInput" onkeyup="filterTasks()" placeholder="Search..." 
-         style="width: 100%; padding: 10px; border-radius: 4px; border: none; box-sizing: border-box; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-  </div>
-
-  <div id="counter-container" style="display: none; text-align: center; margin-bottom: 15px; font-weight: bold; color: #F5F5F5 !important; font-size: 16px;">
-    <span id="completed-count">0</span> / <span id="total-count">0</span> tasks completed
-  </div>
-
-  <div class="legend-container" style="display: none;">
-    <div class="legend-item">
-      <span class="dot avant"></span> <span>Before</span>
+    <div id="filter-container" style="margin-bottom: 20px; display: none;">
+      <input type="text" id="filterInput" onkeyup="filterTasks()" placeholder="Search..." 
+           style="width: 100%; padding: 10px; border-radius: 4px; border: none; box-sizing: border-box; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
     </div>
-    <div class="legend-item">
-      <span class="dot veille"></span> <span>Day before</span>
+
+    <div id="counter-container" style="display: none; text-align: center; margin-bottom: 15px; font-weight: bold; color: #F5F5F5 !important; font-size: 16px;">
+      <span id="completed-count">0</span> / <span id="total-count">0</span> actions done
     </div>
-    <div class="legend-item">
-      <span class="dot jourj"></span> <span>D-Day</span>
+
+    <div class="legend-container" style="display: none;">
+      <div class="legend-item">
+        <span class="dot avant"></span> <span>Before</span>
+      </div>
+      <div class="legend-item">
+        <span class="dot veille"></span> <span>The day before</span>
+      </div>
+      <div class="legend-item">
+        <span class="dot jourj"></span> <span>D Day</span>
+      </div>
+    </div>
+
+    <div id="list" style="display: none;"></div>
+  
+  <div id="contact-section" style="display: none;">
+    <div class="contact-card">
+      <h3>Coordinators</h3>
+      <ul class="contact-list">
+        <li>
+          <span class="name">Dad</span>
+	  <div class="desc-container">
+        <span class="desc">Sound, Mic, & Lighting Lead</span>
+		<span class="info-line">📞 07 48 14 76 75</span>
+	    <span class="note">Set up the speaker and prepare the playlist for the Town Hall with Xavier.<br>Install speakers at Henri's Palombière.<br>Test Mic, extension cords, and evening lights.</span>
+	  </div>
+        </li>
+		<li>
+          <span class="name">Mom</span>
+	  <div class="desc-container">
+	    <span class="desc">Flowers & Brunch Lead</span>
+		<span class="info-line">📞 06 60 59 68 68</span>
+	    <span class="note">Bridal bouquet.<br>Pizza, pastries, fruits, and drinks for the brunch.</span>
+          </div>
+        </li>
+        <li>
+	  <span class="name">Hanaleï's Witnesses</span>
+	  <div class="desc-container">
+	    <span class="desc">Music & Video Leads</span>
+		<span class="info-line">📞 06 33 74 73 83 (Léandra)<br>📞 06 04 16 24 01 (Ilona)</span>
+	    <span class="note">Secular Ceremony speeches.<br>Start music for the Ceremony, dinner, first dance, and surprise dance.<br>Set up tripod and GoPro for ceremony, first dance, and party videos.<br>Charge the GoPro between the day and evening.</span>
+          </div>
+        </li>
+        <li>
+          <span class="name">Adil's Witnesses</span>
+	  <div class="desc-container">
+	    <span class="desc">Rings Lead</span>
+		<span class="info-line">📞 07 81 79 71 80 (Saban)</span>
+	    <span class="note">Secular Ceremony speeches.<br>Bring the rings to the couple during the Secular Ceremony.</span>
+          </div>
+        </li>
+        <li>
+          <span class="name badge-special" onclick="openPinkModal()" style="cursor:pointer;">Bridesmaids</span>
+	  <div class="desc-container">
+	    <span class="desc">Welcome & Timing Leads</span>
+	    <span class="note">Welcome guests at the town hall.<br>Welcome saxophonist, caterer, and pastry chef.<br>Invite people to take their seats at 9:00 pm.<br>Bring the Wedding Cake out after the first dance.</span>
+          </div>
+        </li>
+		<li>
+          <span class="name">Tony</span>
+	  <div class="desc-container">
+	    <span class="desc">Secular Ceremony Officiant</span>
+		<span class="info-line">📞 06 80 16 97 51</span>
+	    <span class="note">Script prepared in advance.<br>Announce the cocktail hour and the dinner to follow.</span>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
+  
+    <div id="pinkModal" class="modal-overlay" onclick="closePinkModal()">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <h4 style="margin-top:0; color:var(--primary)">Dress Code</h4>
+        <div class="color-grid">
+          <div class="color-square" style="background: #FFB7C5;"></div>
+          <div class="color-square" style="background: #F49AC2;"></div>
+          <div class="color-square" style="background: #FF91A4;"></div>
+          <div class="color-square" style="background: #FC8EAC;"></div>
+          <div class="color-square" style="background: #F08080;"></div>
+          <div class="color-square" style="background: #DE5D83;"></div>
+          <div class="color-square" style="background: #C93886;"></div>
+          <div class="color-square" style="background: #C21E56;"></div>
+          <div class="color-square" style="background: #800844;"></div>
+        </div>
+	    <div style="text-align: center; width: 100%;">
+          <a href="https://hanaleibunn-eng.github.io/moodboard/" class="btn-moodboard"
+		  style="background-color: var(--primary) !important; color: white !important; display: inline-block;">
+  		  See inspirations
+		  </a>
+        </div>
+        <button onclick="closePinkModal()" style="margin-top:20px; border:none; background:var(--primary); color:white; padding:8px 15px; cursor:pointer; border-radius:5px;">Close</button>
+      </div>
+    </div>
+  
+  <div id="logistique-section" style="display: none;">
+  <div id="timeline-section"><h3>Budget Tracking</h3></div>
+    <div class="contact-card">
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-family: Verdana, sans-serif; font-size: 13px;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--success); color: var(--card);">
+              <th style="text-align: left; padding: 8px;">Category</th>
+              <th style="text-align: left; padding: 8px;">Status</th>
+              <th style="text-align: left; padding: 8px;">Deadline</th>
+            </tr>
+          </thead>
+          <tbody style="color: white; opacity: 0.9;">
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 10px;">Caterer</td>
+              <td style="padding: 10px; font-weight: bold;">Unpaid</td>
+              <td style="padding: 10px;">June-July</td>
+            </tr>
+			<tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 10px;">Venue</td>
+              <td style="padding: 10px; font-weight: bold;">Partial</td>
+              <td style="padding: 10px;">Remaining in July</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 10px;">Photographer</td>
+              <td style="padding: 10px; font-weight: bold;">Unpaid</td>
+              <td style="padding: 10px;">July</td>
+            </tr>
+			<tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 10px;">Drinks</td>
+              <td style="padding: 10px; font-weight: bold;">Unpaid</td>
+              <td style="padding: 10px;">June-July</td>
+            </tr>
+			<tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 10px;">Wedding Rings</td>
+              <td style="padding: 10px; font-weight: bold;">Unpaid</td>
+              <td style="padding: 10px;">March</td>
+            </tr>
+			<tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 10px;">Morocco Engagement</td>
+              <td style="padding: 10px; font-weight: bold;">Unpaid</td>
+              <td style="padding: 10px;">March-April</td>
+            </tr>
+			<tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 10px;">Saxophonist</td>
+              <td style="padding: 10px; font-weight: bold;">Unpaid</td>
+              <td style="padding: 10px;">July</td>
+            </tr>
+			<tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 10px;">Sound & Lighting</td>
+              <td style="padding: 10px; font-weight: bold;">Unpaid</td>
+              <td style="padding: 10px;">July</td>
+            </tr>
+			<tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 10px;">Brunch</td>
+              <td style="padding: 10px; font-weight: bold;">Unpaid</td>
+              <td style="padding: 10px;">July</td>
+            </tr>
+			<tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 10px;">Wedding Cake</td>
+              <td style="padding: 10px; font-weight: bold;">Partial</td>
+              <td style="padding: 10px;">Remaining in July</td>
+            </tr>
+			<tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 10px;">Hair/Makeup Artist</td>
+              <td style="padding: 10px; font-weight: bold;">Unpaid</td>
+              <td style="padding: 10px;">July</td>
+            </tr>
+			<tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 10px;">Decor/Accessories</td>
+              <td style="padding: 10px; font-weight: bold;">Partial</td>
+              <td style="padding: 10px;">During 2026</td>
+            </tr>
+			<tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 10px;">Suit</td>
+              <td style="padding: 10px; font-weight: bold;">Unpaid</td>
+              <td style="padding: 10px;">April-May</td>
+            </tr>
+			<tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+              <td style="padding: 10px;">Dress</td>
+              <td style="padding: 10px; font-weight: bold;">Paid</td>
+              <td style="padding: 10px;">January-February</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+	<div id="timeline-section"><h3><br><br>Inventory</h3></div>
+    <ul class="guest-list" style="padding-left: 40px;">
+	  <li style="color: #ffffff;">GoPro</li>
+	  <li style="color: #ffffff;">Tripod</li>
+	  <li style="color: #ffffff;">Polaroid</li>
+	  <li style="color: #ffffff;">Notebook and pens</li>
+	  <li style="color: #ffffff;">Pétanque balls</li>
+	  <li style="color: #ffffff;">Lavender cones</li>
+	  <li style="color: #ffffff;">Wedding favors (dragees or local honey)</li>
+	  <li style="color: #ffffff;">Individual bags</li>
+	  <li style="color: #ffffff;">Metal straws</li>
+	  <li style="color: #ffffff;">Jar</li>
+	  <li style="color: #ffffff;">Lemonade stand cups</li>
+	  <li style="color: #ffffff;">Lemonade dispenser</li>
+	  <li style="color: #ffffff;">Chilled water dispenser</li>
+	  <li style="color: #ffffff;">Jute table runners</li>
+	  <li style="color: #ffffff;">Fans</li>
+	  <li style="color: #ffffff;">Individual tissues</li>
+	  <li style="color: #ffffff;">Parasols</li>
+	  <li style="color: #ffffff;">Empty vase for bridal bouquet</li>
+	  <li style="color: #ffffff;">Table vases</li>
+	  <li style="color: #ffffff;">White markers</li>
+	  <li style="color: #ffffff;">Chair bows</li>
+	  <li style="color: #ffffff;">Ribbon for Arch</li>
+	  <li style="color: #ffffff;">Lanterns</li>
+	  <li style="color: #ffffff;">Trestle and mirror</li>
+	  <li style="color: #ffffff;">Pampas grass and golden holly</li>
+	  <li style="color: #ffffff;">Dried flowers</li>
+	  <li style="color: #ffffff;">Table number photos</li>
+	  <td style="color: #ffffff;">Golden photo holders</li>
+	  <li style="color: #ffffff;">Place cards (pebbles or cards)</li>
+	  <li style="color: #ffffff;">Seating plan poster</li>
+	  <li style="color: #ffffff;">Photo QR code poster</li>
+	  <li style="color: #ffffff;">Parking sign poster</li>
+	  <li style="color: #ffffff;">Ladies' restroom basket</li>
+	  <li style="color: #ffffff;">Deodorant and wipes</li>
+	  <li style="color: #ffffff;">Extension cords (x3)</li>
+	  <li style="color: #ffffff;">Paper napkins for Brunch</li>
+	  <li style="color: #ffffff;">Envelopes for Guest Wall</li>
+	  <li style="color: #ffffff;">Adhesive putty (Sticky tack)</li>
+	  <li style="color: #ffffff;">Sewing kit and chalk</li>
+	</ul>
+	<div id="timeline-section"><h3><br><br>Inspirations<br></h3></div>
+	<div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; padding: 10px;">
+	  <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <img src="https://plus.unsplash.com/premium_photo-1676383424127-9903f6d1fd28?w=600&auto=format&fit=crop&q=60" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <img src="https://images.unsplash.com/photo-1542617270-ca45a284c846?q=80&w=1171&auto=format&fit=crop" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <img src="https://bergamotte.imgix.net/mm11fsjpg23gqi2xv42an28xe9vp?auto=format&fit=crop&w=850" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <img src="https://plus.unsplash.com/premium_photo-1661645039233-6ad297af255d?q=80&w=687&auto=format&fit=crop" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+	  <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <img src="https://images.unsplash.com/photo-1519092796169-bb9cc75a4b68?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <img src="https://i.pinimg.com/1200x/f7/39/ae/f739ae8e74efa9027d0221e82021309d.jpg" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+	  <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <img src="https://bergamotte.imgix.net/7it1akbwd4id7yyb6n9wnm5won9g?ixlib=rails-4.3.1&auto=format%2Ccompress&fit=crop&q=65&ar=4%3A5&w=850&dpr=1" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <img src="https://i.pinimg.com/1200x/44/03/ec/4403ec1e47d4eb78c1727a650a5ae698.jpg" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+	  <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <img src="https://i.pinimg.com/736x/6e/36/96/6e36963c6582786408b908ba111b8df3.jpg" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+	  <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <img src="https://img.kwcdn.com/product/open/2023-12-17/1702805279892-c9e3a4d138a743908d4a35690131fb43-goods.jpeg?imageView2/2/w/800/q/70/format/avif" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+	  <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <img src="https://i.pinimg.com/736x/4d/ec/e1/4dece10b9539a78c64b3178b637ae9e4.jpg" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+	  <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <img src="https://i.pinimg.com/1200x/93/80/0b/93800bf11dfe431c379fcb1f0ca1cb62.jpg" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+    </div>
+  </div>
+  
+  <div id="guest-list-section" class="guest-section" style="display: none;">
+    <h3>Guest List</h3>
+	<ul class="guest-list">
+	  <li>Adil <span class="guest-role">(GROOM)</span></li>
+	  <li>Hanaleï <span class="guest-role">(BRIDE)</span></li>
+	  <li>Amina 🌱 <span class="guest-role">(Mom)</span></li>
+	  <li>Carole <span class="guest-role">(Mom)</span></li>
+	  <li>Christophe <span class="guest-role">(Dad)</span></li>
+	  <li>Léandra <span class="guest-role">(Sister)</span></li>
+	  <li>Sofiane <span class="guest-role">(Brother)</span></li>
+	  <li>Ilona <span class="guest-role">(Witness)</span></li>
+	  <li>Maxime</li>
+	  <li>Saban 🌱 <span class="guest-role">(Witness)</span></li>
+	  <li>Nora 🌱</li>
+	  <li>Myriam 🌱 <span class="guest-role">(Aunt)</span></li>
+	  <li>Zineb 🌱 <span class="guest-role">(Aunt)</span></li>
+	  <li>Ghita 🌱 <span class="guest-role">(Cousin)</span></li>
+	  <li>Anthony B. <span class="guest-role">(Uncle)</span></li>
+	  <li>Gwen B.</li>
+	  <li>Indiana <span class="guest-role">(Cousin)</span></li>
+	  <li>Marc <span class="guest-role">(Grandpa)</span></li>
+	  <li>Rachel</li>
+	  <li>Annie <span class="guest-role">(Grandma)</span></li>
+	  <li>Hervé <span class="guest-role">(Uncle)</span></li>
+	  <li>Isabelle</li>
+	  <li>Thibault and Angelia</li>
+	  <li>Mathilde <span class="guest-role">(Bridesmaid)</span></li>
+	  <li>Vincent</li>
+	  <li>Elsa <span class="guest-role">(Bridesmaid)</span></li>
+	  <li>Thibault</li>
+	  <li>Marlène <span class="guest-role">(Bridesmaid)</span></li>
+	  <li>Antoine Bu</li>
+	  <li>Delphine <span class="guest-role">(Bridesmaid)</span></li>
+	  <li>Benjamin</li>
+	  <li>Juliette <span class="guest-role">(Bridesmaid)</span></li>
+	  <li>Kevin</li>
+	  <li>Simon</li>
+	  <li>Simon's Daughter</li>
+	  <li>Simon's Daughter</li>
+	  <li>Stéphanie</li>
+	  <li>Julien</li>
+	  <li>Loralie</li>
+	  <li>Maxandre</li>
+	  <li>Marilyn</li>
+	  <li>Christian</li>
+	  <li>Carla</li>
+	  <li>Anthony and Célia</li>
+	  <li>Raymond</li>
+      <li>Corinne</li>
+	  <li>Alexis</li>
+      <li>Julien</li>
+	  <li>Martine</li>
+	  <li>Mathieu</li>
+	  <li>Marie-Noëlle</li>
+	  <li>Paule</li>
+	  <li>Olivier</li>
+	  <li>Laurent</li>
+	  <li>Karen</li>
+	  <li>Abdoul</li>
+	  <li>Moncef and his wife</li>
+	  <li>Noussair</li>
+	  <li>Zeineb 🌱</li>
+	  <li>Mariam 🌱</li>
+	  <li>Lucas</li>
+	  <li>Alexandros</li>
+	  <li>Brice</li>
+	  <li>Noémie and Nico</li>
+	  <li>Nina and Egon</li>
+	  <li>Maïlys and P-G.</li>
+	  <li>Gwen and Hugo</li>
+	  <li>Justine and Malo</li>
+	  <li>Estelle</li>
+	  <li>Pauline and William</li>
+	  <li>Wijdane and Brice</li>
+	  <li>Soleil</li>
+	  <li>Manon</li>
+	  <li>Clara and Youssef</li>
+	  <li>Mohammed 🌱</li>
+	  <li>Taha 🌱</li>
+	  <li>Mathilde B.</li>
+	  <li>Mahoua and Axel</li>
+	<p style="text-align:center; font-size: 12px; color: #999; margin-top: 15px; font-style: italic;">Total: 90 people<br> <br> 
+    </p>
+	<p class="guest-role"><span>Guests for Ceremony and Cocktail Hour:</span></p>
+	<ul class="guest-list"> <li>Aline and Gilou</li>
+      <li>Luc and Sandrine</li>
+      <li>Christophe and Barbara</li>
+      <li>Sandrine</li>
+      <li>Alain and Solange</li>
+      <li>Anne and Philippe</li>
+      <li>Philippe and Nathalie</li>
+      <li>Bénédicte and Alex</li>
+      <li>Stéphane and Sandrine</li>
+    </ul>      
+  </div>	
+  
+  <div id="seating-section" style="display: none; padding: 0 10px;">
+    <div id="timeline-section"><h3>Seating Plan</h3></div>
+    <p style="text-align: center; font-size: 14px; color: #ffffff; font-style: italic; margin-bottom: 20px;">Provisional - Awaiting confirmations</p>
 
-  <div id="list" style="display: none;"></div>
+    <div class="seating-grid">
+      <div class="table-card honneur">
+        <div class="table-title">Head Table</div>
+        <div class="seats-list" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="seat">Amina</div><div class="seat">Adil</div><div class="seat">Hanaleï</div><div class="seat">Carole</div>
+          <div class="seat">Simon</div><div class="seat center-cercle">🏵️</div><div class="seat center-cercle">🏵️</div><div class="seat">Christophe</div>
+        <div class="seat empty">Sofiane</div><div class="seat empty">Saban</div><div class="seat">Ilona</div><div class="seat">Léandra</div>
+        </div>
+      </div>
 
-  <script type="module">
+      <div class="table-card">
+        <div class="table-title">Table 1</div>
+        <div class="seats-list">
+          <div class="seat">Gwen</div><div class="seat">Hugo</div><div class="seat empty">Maxime</div>
+          <div class="seat">Justine</div><div class="seat center-cercle">🪻</div><div class="seat empty">William</div>
+          <div class="seat">Malo</div><div class="seat empty">Estelle</div><div class="seat empty">Pauline</div>
+        </div>
+      </div>
+  	 <div class="table-card">
+        <div class="table-title">Table 2</div>
+        <div class="seats-list">
+          <div class="seat">Mariam</div><div class="seat">Zaineb</div><div class="seat">Taha</div>
+          <div class="seat empty">Mohammed</div><div class="seat center-cercle">🌺</div><div class="seat">Brice</div>
+          <div class="seat empty">Mathilde</div><div class="seat empty">Soleil</div><div class="seat">Wijdane</div>
+        </div>
+      </div>
+	 <div class="table-card">
+        <div class="table-title">Table 3</div>
+        <div class="seats-list">
+          <div class="seat">Karen</div><div class="seat empty">Axel</div><div class="seat empty">Mahoua</div>
+          <div class="seat">Abdoul</div><div class="seat center-cercle">🌹</div><div class="seat">Nora</div>
+          <div class="seat">Noussair</div><div class="seat empty">Moncef/Saban</div><div class="seat">Brice</div>
+        </div>
+      </div>
+	 <div class="table-card">
+        <div class="table-title">Table 4</div>
+        <div class="seats-list">
+          <div class="seat">Zineb</div><div class="seat">Gwen</div><div class="seat">Tony</div>
+          <div class="seat empty">Myriam</div><div class="seat center-cercle">🌸</div><div class="seat">Indiana</div>
+          <div class="seat">Ghita</div><div class="seat empty">Simon's Daughter</div><div class="seat empty">Simon's Daughter</div>
+        </div>
+      </div>
+	 <div class="table-card">
+        <div class="table-title">Table 5</div>
+        <div class="seats-list">
+          <div class="seat">Nicolas</div><div class="seat">Noémie</div><div class="seat">Egon</div>
+          <div class="seat center-hole"></div><div class="seat center-cercle">🌷</div><div class="seat center-hole"></div>
+          <div class="seat">Maïlys</div><div class="seat">P-G.</div><div class="seat">Nina</div>
+        </div>
+      </div>
+	 <div class="table-card">
+        <div class="table-title">Table 6</div>
+        <div class="seats-list">
+          <div class="seat">Mathilde</div><div class="seat">Vincent</div><div class="seat empty">Alexandros</div>
+          <div class="seat">Thibault</div><div class="seat center-cercle">🪻</div><div class="seat empty">Lucas</div>
+          <div class="seat">Elsa</div><div class="seat">Juliette</div><div class="seat">Kevin</div>
+        </div>
+      </div>
+	 <div class="table-card">
+        <div class="table-title">Table 7</div>
+        <div class="seats-list">
+          <div class="seat">Marlène</div><div class="seat">Delphine</div><div class="seat">Benjamin</div>
+          <div class="seat">Youssef</div><div class="seat center-cercle">🌹</div><div class="seat">Antoine</div>
+          <div class="seat">Clara</div><div class="seat empty">Manon</div><div class="seat center-hole"></div>
+        </div>
+      </div>
+	 <div class="table-card">
+        <div class="table-title">Table 8</div>
+        <div class="seats-list">
+          <div class="seat">Hervé</div><div class="seat">Isabelle</div><div class="seat">Angelia</div>
+          <div class="seat">Marc</div><div class="seat center-cercle">🌸</div><div class="seat">Thibault</div>
+          <div class="seat empty">Rachel</div><div class="seat empty">Paule</div><div class="seat">Laurent</div>
+        </div>
+      </div>
+	 <div class="table-card">
+        <div class="table-title">Table 9</div>
+        <div class="seats-list">
+          <div class="seat">Julien</div><div class="seat empty">Mathieu</div><div class="seat empty">Marie-Noëlle</div>
+          <div class="seat">Stéphanie</div><div class="seat center-cercle">🌺</div><div class="seat">Martine</div>
+          <div class="seat">Maxandre</div><div class="seat">Loralie</div><div class="seat center-hole"></div>
+        </div>
+      </div>
+	 <div class="table-card">
+        <div class="table-title">Table 10</div>
+        <div class="seats-list">
+          <div class="seat">Christian</div><div class="seat">Marilyn</div><div class="seat">Célia</div>
+          <div class="seat">Carla</div><div class="seat center-cercle">🌷</div><div class="seat">Anthony</div>
+          <div class="seat empty">Annie</div><div class="seat">Raymond</div><div class="seat">Corinne</div>
+        </div>
+      </div>
+	 <div class="table-card">
+        <div class="table-title">   </div>
+        <div class="seats-list">
+          <div class="seat empty">Alexis</div>
+		  <div class="seat empty">Julien</div>
+		  <div class="seat empty">Moncef's Wife</div>
+          <div class="seat empty">Olivier</div>
+        </div>
+      </div>
+    
+      </div>
+  </div>
+  
+  <footer>
+    <p>&copy;2026 - All rights reserved</p>
+    <p>Contact: <a href="mailto:hanalei.bunn@gmail.com">hanalei.bunn@gmail.com</a><br>Hanaleï Cell: <a href="tel:+33612925022">06 12 92 50 22</a><br>Adil Cell: <a href="tel:+33615824122">06 15 82 41 22</a></p>
+  </footer>
+
+<script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
   import { 
     getDatabase, ref, onValue, push, set, remove, update 
@@ -649,7 +1352,7 @@
   let currentItems = {};
 
   // --- CONFIGURATION DES ACCÈS ---
-  const allowed = ["elsa", "adil", "ilona", "delphine", "mathilde", "juliette", "hanalei", "hanaleï", "maman", "papa", "chris", "marlene", "marlène", "christophe", "carole", "léandra", "leandra"];
+  const allowed = ["elsa", "adil", "ilona", "ilo", "delphine", "dd", "math", "mathou", "mathilde", "juliette", "jul", "hanalei", "hanaleï", "chris", "marlene", "marlène", "marlou", "christophe", "carole", "léandra", "leandra"];
 
   function checkAuth() {
     const code = prompt("Action protégée. Entrez votre prénom pour valider :");
@@ -747,7 +1450,6 @@
       createdAt: Date.now() 
     }).then(() => {
       textInput.value = ""; placeInput.value = ""; ownerInput.value = "";
-      // Optionnel: authInput.value = ""; // Vider le code après ajout ou le laisser pour enchaîner
     });
   };
 
@@ -781,31 +1483,57 @@
   };
   
   window.showTab = function(tabName) {
-    const isChecklist = tabName === 'checklist';
-    const isTimeline = tabName === 'timeline';
-    const isContact = tabName === 'contact';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     const isHome = !tabName;
+    const isTimeline = tabName === 'timeline';
+    const isChecklist = tabName === 'checklist';
+    const isGuestlist = tabName === 'guestlist';
+    const isContact = tabName === 'contact';
+    const isLogistique = tabName === 'logistique';
+    const isInventory = tabName === 'inventory';
+    const isSeating = tabName === 'seating'; // Gardé au cas où tu cliques sur le bouton orange du bas
 
+    // 1. Accueil & Éléments communs
     document.getElementById('welcome-message').style.display = isHome ? 'block' : 'none';
     
-    // Si tu as gardé la section guest-list, assure-toi que l'ID existe
-    const guestSec = document.getElementById('guest-list-section');
-    if (guestSec) guestSec.style.display = isHome ? 'block' : 'none';
-
+    // 2. Checklist (Boutons d'ajout et compteurs)
     document.getElementById('add').style.display = isChecklist ? 'flex' : 'none';
     document.getElementById('filter-container').style.display = isChecklist ? 'block' : 'none';
     document.getElementById('list').style.display = isChecklist ? 'block' : 'none';
-    document.querySelector('.legend-container').style.display = isChecklist ? 'flex' : 'none';
     document.getElementById('counter-container').style.display = isChecklist ? 'block' : 'none';
+    const legend = document.querySelector('.legend-container');
+    if (legend) legend.style.display = isChecklist ? 'flex' : 'none';
 
+    // 3. Affichage des sections
     document.getElementById('timeline-section').style.display = isTimeline ? 'block' : 'none';
     document.getElementById('contact-section').style.display = isContact ? 'block' : 'none';
+    
+    // On lie l'onglet "Invités" à ton ID de section existant
+    const guestSec = document.getElementById('guest-list-section');
+    if (guestSec) guestSec.style.display = isGuestlist ? 'block' : 'none';
 
+    // Gestion Logistique & Inventaire
+    const logSec = document.getElementById('logistique-section');
+    if (logSec) logSec.style.display = isLogistique ? 'block' : 'none';
+
+    const invSec = document.getElementById('inventory-section');
+    if (invSec) invSec.style.display = isInventory ? 'block' : 'none';
+
+    // Gestion du Plan de Table (Seating)
+    const seatingSection = document.getElementById('seating-section');
+    if (seatingSection) seatingSection.style.display = isSeating ? 'block' : 'none';
+
+    // Masquer le bouton orange "Voir le Plan de Table" sur toutes les pages sauf l'accueil
+    const seatingBtn = document.getElementById('seating-btn-container');
+    if (seatingBtn) seatingBtn.style.display = isGuestlist ? 'block' : 'none';
+
+    // 4. État actif des boutons du menu
     const btns = document.querySelectorAll('.tab-btn');
     btns.forEach(btn => btn.classList.remove('active'));
-    if (isTimeline) btns[0].classList.add('active');
-    if (isChecklist) btns[1].classList.add('active');
-    if (isContact) btns[2].classList.add('active');
+	if (tabName) {
+        const clickedBtn = document.querySelector(`.tab-btn[onclick*="${tabName}"]`);
+        if (clickedBtn) clickedBtn.classList.add('active');
+    }
   };
   
   function updateCountdown() {
@@ -825,288 +1553,16 @@
 
   window.openPinkModal = () => document.getElementById('pinkModal').style.display = 'flex';
   window.closePinkModal = () => document.getElementById('pinkModal').style.display = 'none';
+  
+  window.openSoireeModal = () => {
+    document.getElementById('soireeModal').style.display = 'flex';
+  };
+
+  window.closeSoireeModal = () => {
+    document.getElementById('soireeModal').style.display = 'none';
+  };
 
 </script>
-
-  <div id="timeline-section" style="display: none;">
-    <div class="timeline-card">
-      <h3>🕒 Planning of the day</h3>
-      <ul class="timeline-list">
-        <li>
-          <span class="time">1:30 pm</span>
-      <div class="desc-container">
-        <span class="desc">Bride & Groom Preparations</span>
-        <span class="info-line">📍 Larressingle - Home</span>
-        <span class="note">Hair and Makeup for the bride.<br>Presence of Laetitia (hairstylist), Fanny (makeup artist), Mom, Léandra.</span>
-      </div>
-        </li>
-        <li>
-          <span class="time">3:30 pm</span>
-      <div class="desc-container">
-        <span class="desc">Getting Ready</span>
-        <span class="info-line">📍 Larressingle - Home</span>
-        <span class="note">Bridesmaids and Best Men arrival at the house.<br>Photographer present for the bride's final preparations (to be confirmed).</span>
-      </div>
-        </li>
-        <li>
-      <span class="time">4:00 pm</span>
-      <div class="desc-container">
-        <span class="desc">Civil Ceremony</span>
-        <span class="info-line">📍 Larressingle - Town Hall</span>
-        <span class="note">Distribution of fans and umbrellas upon guest arrival if necessary.<br>Groom's arrival around 4:00 PM.<br> Bride's arrival around 4:15 PM.</span>
-          </div>
-        </li>
-        <li>
-          <span class="time">4:45 pm</span>
-      <div class="desc-container">
-        <span class="desc">Couple's Photos</span>
-        <span class="info-line">📍 Larressingle - Castle<br>📞 Photographer - David : <a href="tel:0684366712" style="color: inherit; text-decoration: none; font-weight: bold;">06 84 36 67 12</a></span>
-        <span class="note">Guests depart for "La Palombière d'Henri" in Moncrabeau - 20-minute drive.</span>
-          </div>
-        </li>
-        <li>
-          <span class="time">5:45 pm</span>
-      <div class="desc-container">
-        <span class="desc">Secular Ceremony</span>
-        <span class="info-line">📍 Palombière d'Henri</span>
-        <span class="note">Guest welcome with background music.<br>Introduction by Tony - 5 min.<br> Speeches from witnesses and parents - 15 min.<br> Exchange of rings, vows, symbolic ritual - 10 min.<br>Closing remarks by Tony and musical exit of the newlyweds - 5 min.</span>
-          </div>
-        </li>
-        <li>
-          <span class="time">6:30 pm</span>
-      <div class="desc-container">
-        <span class="desc">Cocktail Hour</span>
-        <span class="info-line">📍 Palombière d'Henri<br>📞 Saxophonist - Pierre : <a href="tel:0780239409" style="color: inherit; text-decoration: none; font-weight: bold;">07 80 23 94 09</a></span>
-        <span class="note">Cocktails and appetizers (4 servers).<br>Atmosphere music: saxophonist.<br>Activities: photos with the photographer, pétanque, guest wall, polaroid.</span>
-          </div>
-        </li>
-        <li>
-          <span class="time">8:30 pm</span>
-      <div class="desc-container">
-        <span class="desc">Dinner</span>
-        <span class="info-line">📞 Caterer - M. Ducousseau : <a href="tel:0687129468" style="color: inherit; text-decoration: none; font-weight: bold;">06 87 12 94 68</a></span>
-        <span class="note">Main course + Cheese platter.<br>Speeches from friends and games.<br>Background music.</span>
-          </div>
-        </li>
-        <li>
-          <span class="time">10:15 pm</span>
-      <div class="desc-container">
-        <span class="desc">First Dance</span>
-        <span class="info-line">📍 Palombière d'Henri</span>
-        <span class="note">Dance with Dad and Adil.<br>In charge of music: Léandra.</span>
-          </div>
-        </li>
-        <li>
-          <span class="time">10:30 pm</span>
-      <div class="desc-container">
-        <span class="desc">Wedding Cake</span>
-        <span class="info-line">📞 Pastry Chef - C. Garnier : <a href="tel:0562281133" style="color: inherit; text-decoration: none; font-weight: bold;">05 62 28 11 33</a></span>
-        <span class="note">Direct delivery by the pastry chef.<br>Dress change for the bride.</span>
-          </div>
-        </li>
-        <li>
-          <span class="time time-party">11:00 pm</span>
-      <div class="desc-container">
-        <span class="desc">PARTY</span>
-        <span class="info-line">📍 Palombière d'Henri</span>
-        <span class="note">Surprise from the Bridesmaids and Witnesses.<br>Evening playlist.</span>
-          </div>
-        </li>
-        <li>
-          <span class="time">Sunday 11:00 am</span>
-      <div class="desc-container">
-        <span class="desc">Brunch</span>
-        <span class="info-line">📍 Palombière d'Henri</span>
-        <span class="note">Sunday Brunch with all guests.</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-  
-  <div id="contact-section" style="display: none;">
-    <div class="contact-card">
-      <h3>Coordinators</h3>
-      <ul class="contact-list">
-        <li>
-          <span class="name">Dad</span>
-      <div class="desc-container">
-        <span class="desc">In charge of Sound & Cables</span>
-        <span class="info-line">📞 07 48 14 76 75</span>
-        <span class="note">Set up the speaker and prepare the playlist for the Town Hall with Xavier.<br>Set up speakers at "La Palombière d'Henri".<br>Test microphone, extension cords, and evening lighting.</span>
-      </div>
-        </li>
-        <li>
-      <span class="name">Léandra</span>
-      <div class="desc-container">
-        <span class="desc"><em>Maid of Honor</em><br>In charge of Playlist</span>
-        <span class="info-line">📞 06 33 74 73 83</span>
-        <span class="note"><br>Play music for the secular ceremony, dinner, first dance, and surprise dance.</span>
-          </div>
-        </li>
-        <li>
-          <span class="name">Ilona</span>
-      <div class="desc-container">
-        <span class="desc"><em>Maid of Honor</em><br>In charge of Go Pro</span>
-        <span class="info-line">📞 06 04 16 24 01</span>        
-        <span class="note">Set up the tripod and Go Pro for secular ceremony videos, first dance, and party dance.<br>Charge the Go Pro between the daytime and evening.</span>
-      </div>
-        </li>
-        <li>
-          <span class="name">Saban</span>
-      <div class="desc-container">
-        <span class="desc"><em>Best Man</em><br>In charge of Wedding Rings</span>
-        <span class="info-line">📞 07 81 79 71 80</span>
-        <span class="note">Bring the rings to the couple during the secular ceremony.</span>
-          </div>
-        </li>
-        <li>
-          <span class="name badge-special" onclick="openPinkModal()" style="cursor:pointer;">Bridesmaids</span>
-      <div class="desc-container">
-        <span class="desc">In charge of Greeting & Timing</span>
-        <span class="note">Greet guests and guide them to the venue after the town hall.<br>Welcome the saxophonist, caterer, and pastry chef.<br>Invite guests to take their seats for dinner.<br>Bring out the wedding cake after the first dance.</span>
-          </div>
-        </li>
-        <li>
-          <span class="name">Tony</span>
-      <div class="desc-container">
-        <span class="desc">Secular Ceremony Officiant</span>
-        <span class="info-line">📞 06 80 16 97 51</span>
-        <span class="note">Speech prepared in advance.<br>Announce the cocktail hour and the dinner to follow.</span>
-          </div>
-        </li>
-        <li>
-          <span class="name">Mom</span>
-      <div class="desc-container">
-        <span class="desc">In charge of Flowers & Brunch</span>
-        <span class="info-line">📞 06 60 59 68 68</span>
-        <span class="note">Bridal bouquet.<br>Pizza, pastries, fruits, and drinks for the brunch.</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-  
-  <div id="pinkModal" class="modal-overlay" onclick="closePinkModal()">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <h4 style="margin-top:0; color:var(--primary)">Dress Code</h4>
-      <div class="color-grid">
-        <div class="color-square" style="background: #FFB7C5;"></div>
-        <div class="color-square" style="background: #F49AC2;"></div>
-        <div class="color-square" style="background: #FF91A4;"></div>
-        <div class="color-square" style="background: #FC8EAC;"></div>
-        <div class="color-square" style="background: #F08080;"></div>
-        <div class="color-square" style="background: #DE5D83;"></div>
-        <div class="color-square" style="background: #C93886;"></div>
-        <div class="color-square" style="background: #C21E56;"></div>
-        <div class="color-square" style="background: #800844;"></div>
-      </div>
-      <button onclick="closePinkModal()" style="margin-top:20px; border:none; background:var(--primary); color:white; padding:8px 15px; cursor:pointer; border-radius:5px;">Fermer</button>
-    </div>
-  </div>
-  
-  <div id="guest-list-section" class="guest-section">
-    <h3>✨ Guest List</h3>
-    <ul class="guest-list">
-      <li style="color: #808080;">Adil <span class="guest-role">(GROOM)</span></li>
-      <li>Hanaleï <span class="guest-role">(BRIDE)</span></li>
-      <li style="color: #808080;">Amina 🌱 <span class="guest-role">(Mom)</span></li>
-      <li>Carole <span class="guest-role">(Mom)</span></li>
-      <li>Christophe <span class="guest-role">(Dad)</span></li>
-      <li>Léandra <span class="guest-role">(Sister)</span></li>
-      <li style="color: #808080;">Sofiane <span class="guest-role">(Brother)</span></li>
-      <li>Ilona <span class="guest-role">(Maid of Honor)</span></li>
-      <li>Maxime</li>
-      <li style="color: #808080;">Saban 🌱 <span class="guest-role">(Best Man)</span></li>
-      <li style="color: #808080;">Nora 🌱</li>
-      <li style="color: #808080;">Myriam 🌱 <span class="guest-role">(Aunt)</span></li>
-      <li style="color: #808080;">Zineb 🌱 <span class="guest-role">(Aunt)</span></li>
-      <li style="color: #808080;">Rhita 🌱 <span class="guest-role">(Cousin)</span></li>
-      <li>Anthony B. <span class="guest-role">(Uncle)</span></li>
-      <li>Gwen B.</li>
-      <li>Indiana <span class="guest-role">(Cousin)</span></li>
-      <li>Marc <span class="guest-role">(Grandpa)</span></li>
-      <li>Rachel</li>
-      <li>Annie <span class="guest-role">(Grandma)</span></li>
-      <li>Hervé <span class="guest-role">(Uncle)</span></li>
-      <li>Isabelle</li>
-      <li>Thibault and Angelia</li>
-      <li>Mathilde <span class="guest-role">(Bridesmaid)</span></li>
-      <li>Vincent</li>
-      <li>Elsa <span class="guest-role">(Bridesmaid)</span></li>
-      <li>Thibault</li>
-      <li>Marlène <span class="guest-role">(Bridesmaid)</span></li>
-      <li>Antoine Bu</li>
-      <li>Delphine <span class="guest-role">(Bridesmaid)</span></li>
-      <li>Benjamin</li>
-      <li>Juliette <span class="guest-role">(Bridesmaid)</span></li>
-      <li>Kevin</li>
-      <li style="color: #808080;">Simon</li>
-      <li style="color: #808080;">Simon's Daughter</li>
-      <li style="color: #808080;">Simon's Daughter</li>
-      <li>Stéphanie</li>
-      <li>Julien</li>
-      <li>Loralie</li>
-      <li>Maxandre</li>
-      <li>Marilyn</li>
-      <li>Christian</li>
-      <li>Carla</li>
-      <li>Anthony and Célia</li>
-      <li>Raymond</li>
-      <li>Corinne</li>
-      <li>Alexis</li>
-      <li>Julien</li>
-      <li>Martine</li>
-      <li>Mathieu</li>
-      <li>Marie-Noëlle</li>
-      <li>Paule</li>
-      <li>Olivier</li>
-      <li>Laurent</li>
-      <li style="color: #808080;">Karen</li>
-      <li style="color: #808080;">Abdoul</li>
-      <li style="color: #808080;">Moncef and his wife</li>
-      <li style="color: #808080;">Noussair</li>
-      <li style="color: #808080;">Zeineb 🌱</li>
-      <li style="color: #808080;">Mariam 🌱</li>
-      <li style="color: #808080;">Lucas</li>
-      <li style="color: #808080;">Alexandros</li>
-      <li style="color: #808080;">Brice</li>
-      <li>Noémie and Nico</li>
-      <li>Nina and Egon</li>
-      <li>Maïlys and P-G.</li>
-      <li>Gwen and Hugo</li>
-      <li>Justine and Malo</li>
-      <li>Estelle</li>
-      <li>Pauline and William</li>
-      <li>Wijdane and Brice</li>
-      <li>Soleil</li>
-      <li>Manon</li>
-      <li>Clara and Youssef</li>
-      <li>Mohammed 🌱</li>
-      <li>Taha 🌱</li>
-      <li>Mathilde B.</li>
-      <li>Mahoua and Axel</li>
-    </ul>
-    <p style="text-align:center; font-size: 12px; color: #999; margin-top: 15px; font-style: italic;">Total: 90 people<br> <br> 
-    </p>
-    <p class="guest-role"><span>Invited to the ceremony and cocktail hour:</span></p>
-    <ul class="guest-list">
-      <li>Aline and Gilou</li>
-      <li>Luc and Sandrine</li>
-      <li>Christophe and Barbara</li>
-      <li>Sandrine</li>
-      <li>Alain and Solange</li>
-      <li>Anne and Philippe</li>
-      <li>Philippe and Nathalie</li>
-      <li>Bénédicte and Alex</li>
-      <li>Stéphane and Sandrine</li>      
-    </ul>
-  </div>	
-  
-  <footer>
-    <p>&copy;2026 Hanaleï et Adil<br>Tous droits réservés</p>
-    <p>Contact : <a href="mailto:votre@email.com">hanalei.bunn@gmail.com</a><br>Tél Hanaleï : <a href="tel:+33600000000">06 12 92 50 22</a><br>Tél Adil : <a href="tel:+33600000000">06 15 82 41 22</a></p>
-  </footer>
 
 </body>
 </html>
