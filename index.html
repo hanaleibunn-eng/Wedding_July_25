@@ -7,12 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #847949;    /* Vert olive */
-	  --primary-dark: #5C5539;    /* Vert foncé */
-      --secondary: #99ABA6;    /* Bleu */
-      --success: #D2BF81;  /* Jaune des tables */
-      --card: #FCF9F2;    /* Ivoire */
-	  --card-input: #BC6C4D;    /* Terracota */
+      --vert: #847949;    /* Vert olive */
+	  --vert-dark: #5C5539;    /* Vert foncé */
+      --bleu: #99ABA6;    /* Bleu */
+      --jaune: #D2BF81;  /* Jaune des tables */
+      --ivoire: #FCF9F2;    /* Ivoire */
+	  --terracota: #BC6C4D;    /* Terracota */
+	  --bordeaux: #800020;    /* Bordeaux classique */
+	  --bordeaux-dark: #4A0E0E;
+      --rose: #D47386;  /* Un ton plus clair pour les éléments secondaires */
     }
 
     body, button, input, select, textarea { 
@@ -20,8 +23,8 @@
     }
 
     body { 
-      background: var(--primary-dark);
-      color: #3d2b2b;
+      background: var(--ivoire);
+      color: var(--bordeaux-dark);
       max-width: 600px;
       margin: 0 auto;
       padding: 50px 15px 20px 15px;
@@ -31,7 +34,7 @@
 
 	h1 { 
       text-align: center; 
-      color: var(--card);
+      color: var(--bordeaux-dark);
       font-weight: 700;
       margin: 0;
 	  margin-bottom: 25px;
@@ -51,7 +54,7 @@
       transform: translateX(-50%);
       width: 80px;
       height: 3px;
-      background-color: var(--card);
+      background-color: var(--bordeaux-dark);
       border-radius: 2px;
     }
 	
@@ -67,7 +70,7 @@
     }
 
     #add { 
-      background: var(--card);
+      background: var(--vert);
       padding: 20px;
       border-radius: 4px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.05);
@@ -78,25 +81,25 @@
     }
 	
 	#add label {
-      color: var(--primary);
+      color: var(--ivoire);
       font-weight: 600;
 	  font-size: 13px;
     }
 	
 	input[type="radio"] {
-      accent-color: var(--primary-dark);
+      accent-color: var(--vert);
       cursor: pointer;
     }
 	
 	.moment-selection label {
-      color: var(--success);
+      color: var(--bordeaux);
       font-size: 14px;
       font-weight: bold;
     }
 
     input[type="text"] { 
       padding: 8px 12px; 
-      border: 1px solid var(--card); 
+      border: 1px solid var(--ivoire); 
       border-radius: 0;
       outline: none;
       transition: border-color 0.3s;
@@ -106,12 +109,10 @@
      font-size: 13px;
 	 padding: 8px 12px;
     }
-	
-    input[type="text"]:focus { border-color: var(--primary); }
 
     button#addBtn { 
-      background: var(--success); 
-      color: white; 
+      background: var(--ivoire); 
+      color: var(--bordeaux); 
       border: none; 
       padding: 12px;
       font-family: inherit; /* Pour bien prendre le Verdana */
@@ -126,7 +127,7 @@
 
     /* Liste des tâches */
     .item { 
-      background: var(--card);
+      background: #ffffff;
       margin-bottom: 12px;
       padding: 15px;
       border-radius: 4px;
@@ -159,7 +160,7 @@
       border: 1.5px solid #dfe6e9;
     }
 
-    .checkbox-container input:checked ~ .checkmark { background-color: var(--success); }
+    .checkbox-container input:checked ~ .checkmark { background-color: var(--vert-dark); }
 
     .checkmark:after {
       content: "";
@@ -183,19 +184,19 @@
     .badge { background: #f1f2f6; padding: 2px 8px; border-radius: 4px; }
 
     .delete-btn { 
-      background: none; border: none; color: var(--primary); 
+      background: none; border: none; color: var(--bordeaux-dark); 
       font-size: 20px; cursor: pointer; padding: 5px;
     }
 
-    .item.avant { border-left: 15px solid var(--primary); }
-    .item.veille { border-left: 15px solid var(--success); }
-    .item.jourj { border-left: 15px solid var(--card-input); }
+    .item.avant { border-left: 15px solid var(--vert); }
+    .item.veille { border-left: 15px solid var(--jaune); }
+    .item.jourj { border-left: 15px solid var(--rose); }
 
     /* On ajuste un peu la carte pour que le bord coloré soit joli */
     .item { border-left: 8px solid transparent; }
 
     .badge { 
-      background: var(--card); 
+      background: var(--ivoire); 
       padding: 2px 6px;
       font-size: 11px;	  
       border-radius: 4px;
@@ -221,10 +222,10 @@
 	  border: none;
 	  font-family: inherit;
 	  border-radius: 4px; 
-      background: var(--card);
+      background: var(--ivoire);
 	  cursor: pointer;
 	  font-weight: bold;
-	  color: var(--success);
+	  color: var(--bordeaux-dark);
 	  font-size: 11px;
 	  text-transform: uppercase;
 	  white-space: nowrap;
@@ -233,12 +234,11 @@
 	  justify-content: center;
 	  gap: 6px;
 	  transition: all 0.3s ease;
-      border: 1px solid rgba(255,255,255,0.3);
     }
 
     /* Le Badge de l'heure */
     .time { 
-      background: var(--primary); 
+      background: var(--bordeaux); 
       color: white !important; 
       padding: 7px 13px;
       border-radius: 20px;
@@ -253,7 +253,7 @@
 	/* Style festif unique pour le badge de la soirée */
     .time.time-party {
       background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c) !important;
-      color: var(--primary-dark) !important; /* Texte sombre pour contrer le doré clair */
+      color: var(--bordeaux-dark) !important; /* Texte sombre pour contrer le doré clair */
       box-shadow: 0 4px 15px rgba(191, 149, 63, 0.4);
       border: 1px solid rgba(255, 255, 255, 0.5);
     }
@@ -261,7 +261,7 @@
 	/* --- TITRES DE SECTIONS (Planning & Contacts) --- */
     #timeline-section h3, 
     #contact-section h3 {
-      color: var(--card);
+      color: var(--vert-dark);
       text-align: center;
       text-transform: uppercase;
       font-family: 'Playfair Display', serif;
@@ -291,7 +291,7 @@
     .contact-list li { 
       display: flex; 
       flex-direction: column; 
-      background: var(--card); 
+      background: var(--ivoire); 
       margin-bottom: 15px; 
       padding: 15px; 
       border-radius: 8px; 
@@ -303,7 +303,7 @@
 
     /* Ajustement spécifique pour les noms dans Contacts (pour qu'ils ressemblent aux badges d'heures) */
     .name { 
-      background: var(--primary); 
+      background: var(--bordeaux); 
       color: white !important; 
       padding: 7px 13px;
       border-radius: 20px;
@@ -317,7 +317,7 @@
 
     .desc { 
       font-size: 16px; /* Titre un peu plus grand */
-      color: var(--primary-dark);
+      color: var(--bordeaux-dark);
       font-weight: 800;
       display: block;
       margin-bottom: 5px;
@@ -359,7 +359,7 @@
       margin-bottom: 10px;
       font-size: 14px;
       font-weight: 600;
-	  color: var(--card);
+	  color: var(--jaune);
     }
 
     .legend-item {
@@ -376,9 +376,9 @@
     }
 
     /* Couleurs identiques à tes bordures d'étiquettes */
-	.dot.avant { background-color: var(--primary); }
-    .dot.veille { background-color: var(--success); }
-    .dot.jourj { background-color: var(--card-input); }
+	.dot.avant { background-color: var(--vert); }
+    .dot.veille { background-color: var(--jaune); }
+    .dot.jourj { background-color: var(--rose); }
 
     * {
       box-sizing: border-box;
@@ -403,7 +403,7 @@
       display: block;
       font-size: 22px;
       font-weight: bold;
-      color: var(--card);
+      color: var(--bordeaux);
     }
 	
     .countdown-box small {
@@ -414,7 +414,7 @@
     }
 	
 	.welcome-card {
-      background: var(--success); 
+      background: var(--vert); 
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       padding: 30px 10px; /* Padding réduit sur les côtés pour gagner de la place */
@@ -428,7 +428,7 @@
 	
 	/* --- SECTION GUEST LIST --- */
     .guest-section {
-      background: var(--card);
+      background: var(--ivoire);
       padding: 25px;
       border-radius: 15px;
       margin: 30px 15px;
@@ -436,7 +436,7 @@
     }
 
     .guest-section h3 {
-      color: var(--primary);
+      color: var(--vert-dark);
       text-align: center;
       font-family: 'Playfair Display', serif;
       text-transform: uppercase;
@@ -477,7 +477,7 @@
       font-style: italic;
 	  font-weight: normal;
       margin-left: 5px;
-	  color: var(--primary-dark);
+	  color: var(--terracota);
     }
 	
     .badge-special {
@@ -524,7 +524,7 @@
 	.btn-moodboard {
       display: inline-block;
       padding: 12px 25px;
-      background-color: var(--primary);
+      background-color: var(--bordeaux);
       color: white;
       text-decoration: none;
       border-radius: 50px;
@@ -536,8 +536,8 @@
     }
 
     .btn-moodboard:hover {
-      background-color: #F5F5F5;
-      color: var(--primary-dark);
+      background-color: var(--terracota);
+      color: #ffffff;
       transform: translateY(-3px);
     }
 	
@@ -550,21 +550,21 @@
     }
 
     .table-card {
-      background: var(--secondary);
+      background: var(--rose);
       border-radius: 12px;
       padding: 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .table-card.honneur {
-      background: var(--card-input);
+      background: var(--terracota);
 	  border-top: none;
       grid-column: 1 / -1; /* Prend toute la largeur sur grand écran */
     }
 
     .table-title {
       font-family: 'Playfair Display', serif;
-      color: var(--card);
+      color: var(--ivoire);
       font-size: 18px;
       margin-bottom: 12px;
       text-align: center;
@@ -580,7 +580,7 @@
 
     .seat {
       font-size: 12px;
-      background: var(--card);
+      background: var(--ivoire);
       border: 1px solid #eee;
       padding: 6px 2px;
       text-align: center;
@@ -612,7 +612,7 @@
       height: 40px;
       border-radius: 50%;    
       margin: 0 auto;
-      background: var(--card);
+      background: var(--jaune);
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 	}
 	
@@ -631,7 +631,7 @@
 	  position: sticky;
       top: 0;              /* Se colle au bord haut */
       z-index: 1000;       /* Reste au-dessus du contenu qui défile */
-      background: var(--primary-dark);
+      background: var(--bordeaux);
     }
 	
     .grid-tabs .tab-btn {
@@ -642,19 +642,19 @@
       white-space: nowrap;
     }
 	
-	.tab-btn.active { background: var(--success) !important; color: #ffffff !important; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+	.tab-btn.active { background: var(--bordeaux) !important; color: #ffffff !important; }
 	
 	footer {
       text-align: center; /* Centre le texte */
       padding: 0;
       font-size: 0.8rem;  /* Rend le texte plus petit (1rem est la taille normale) */
-      color: rgba(255, 255, 255, 0.7);
+      color: var(--bordeaux);
       border-top: 1px solid #eee; /* Une petite ligne de séparation optionnelle */
 	  margin-top: 50px; /* Donne de l'air après la liste */
     }
 
     footer a {
-      color: #ffffff;
+      color: var(--bordeaux-dark);
       text-decoration: underline;
     }
 
@@ -676,10 +676,10 @@
   </div>
 
   <div id="welcome-message" style="display: block;">
-    <div style="text-align: center; color: var(--card); margin-top: 35px;">
+    <div style="text-align: center; color: var(--bordeaux-dark); margin-top: 35px;">
 	  <p style="font-size: 14px; font-family: Verdana, sans-serif; margin-bottom: 15px;">Saturday 25th of July, 2026<br> </p>
       <div class="welcome-card">
-        <p style="margin: 0; line-height: 1.6; letter-spacing: 1.5px; font-style: italic; font-size: 20px; color: var(--card);">
+        <p style="margin: 0; line-height: 1.6; letter-spacing: 1.5px; font-style: italic; font-size: 20px; color: var(--ivoire);">
           Civil and Secular Wedding of Hanalei and Adil
           <span style="font-weight: 400; font-size: 12px; font-family: Verdana, sans-serif; font-style: normal; letter-spacing: 0.2px; opacity: 0.9;"><br>Number of guests: <strong>90</strong></span>
         </p>
@@ -809,7 +809,7 @@
   
     <div id="soireeModal" class="modal-overlay" onclick="closeSoireeModal()">
       <div class="modal-content" onclick="event.stopPropagation()">
-        <h2 style="font-family: 'Playfair Display', serif; color: var(--primary);">Night Program</h2>
+        <h2 style="font-family: 'Playfair Display', serif; color: var(--vert);">Night Program</h2>
         <hr style="border: 0; border-top: 1px solid #eee; margin: 5px 0;">
     
         <p style="font-family: Verdana, sans-serif; font-size: 14px; text-align: left; line-height: 1.6;">
@@ -820,7 +820,7 @@
           📸 GoPro circulating throughout the night<br>
         </p>
 
-        <button onclick="closeSoireeModal()" style="margin-top: 20px; padding: 10px 20px; background: var(--primary); color: white; border: none; border-radius: 5px; cursor: pointer;">Close</button>
+        <button onclick="closeSoireeModal()" style="margin-top: 20px; padding: 10px 20px; background: var(--bordeaux); color: white; border: none; border-radius: 5px; cursor: pointer;">Close</button>
       </div>
     </div>
   
@@ -831,7 +831,7 @@
       <input type="text" id="newOwner" placeholder="Responsible person" style="flex: 1; min-width: 140px;">
     </div>
 
-    <input type="password" id="authId" placeholder="Your first name (Restricted access)" style="padding: 8px 12px; border: 1.5px solid var(--success); outline: none; font-size: 13px;">
+    <input type="password" id="authId" placeholder="Your first name (Restricted access)" style="padding: 8px 12px; border: 1.5px solid var(--vert-dark); outline: none; font-size: 13px;">
 
     <div class="moment-selection" style="display: flex; justify-content: space-around; padding: 5px; margin-top: 0px;">
       <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
@@ -853,7 +853,7 @@
            style="width: 100%; padding: 10px; border-radius: 4px; border: none; box-sizing: border-box; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
     </div>
 
-    <div id="counter-container" style="display: none; text-align: center; margin-bottom: 15px; font-weight: bold; color: #F5F5F5 !important; font-size: 16px;">
+    <div id="counter-container" style="display: none; text-align: center; margin-bottom: 15px; font-weight: bold; color: var(--bordeaux-dark) !important; font-size: 16px;">
       <span id="completed-count">0</span> / <span id="total-count">0</span> actions done
     </div>
 
@@ -928,7 +928,7 @@
   
     <div id="pinkModal" class="modal-overlay" onclick="closePinkModal()">
       <div class="modal-content" onclick="event.stopPropagation()">
-        <h4 style="margin-top:0; color:var(--primary)">Dress Code</h4>
+        <h4 style="margin-top:0; color:var(--bordeaux)">Dress Code</h4>
         <div class="color-grid">
           <div class="color-square" style="background: #FFB7C5;"></div>
           <div class="color-square" style="background: #F49AC2;"></div>
@@ -942,11 +942,11 @@
         </div>
 	    <div style="text-align: center; width: 100%;">
           <a href="https://hanaleibunn-eng.github.io/moodboard/" class="btn-moodboard"
-		  style="background-color: var(--primary) !important; color: white !important; display: inline-block;">
+		  style="background-color: var(--bordeaux) !important; color: white !important; display: inline-block;">
   		  See inspirations
 		  </a>
         </div>
-        <button onclick="closePinkModal()" style="margin-top:20px; border:none; background:var(--primary); color:white; padding:8px 15px; cursor:pointer; border-radius:5px;">Close</button>
+        <button onclick="closePinkModal()" style="margin-top:20px; border:none; background:var(--bordeaux); color:white; padding:8px 15px; cursor:pointer; border-radius:5px;">Close</button>
       </div>
     </div>
   
@@ -956,13 +956,13 @@
       <div style="overflow-x: auto;">
         <table style="width: 100%; border-collapse: collapse; font-family: Verdana, sans-serif; font-size: 13px;">
           <thead>
-            <tr style="border-bottom: 2px solid var(--success); color: var(--card);">
+            <tr style="border-bottom: 2px solid var(--vert); color: var(--vert);">
               <th style="text-align: left; padding: 8px;">Category</th>
               <th style="text-align: left; padding: 8px;">Status</th>
               <th style="text-align: left; padding: 8px;">Deadline</th>
             </tr>
           </thead>
-          <tbody style="color: white; opacity: 0.9;">
+          <tbody style="color: var(--vert-dark); opacity: 0.9;">
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
               <td style="padding: 10px;">Caterer</td>
               <td style="padding: 10px; font-weight: bold;">Unpaid</td>
@@ -1035,87 +1035,6 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-	<div id="timeline-section"><h3><br><br>Inventory</h3></div>
-    <ul class="guest-list" style="padding-left: 40px;">
-	  <li style="color: #ffffff;">GoPro</li>
-	  <li style="color: #ffffff;">Tripod</li>
-	  <li style="color: #ffffff;">Polaroid</li>
-	  <li style="color: #ffffff;">Notebook and pens</li>
-	  <li style="color: #ffffff;">Pétanque balls</li>
-	  <li style="color: #ffffff;">Lavender cones</li>
-	  <li style="color: #ffffff;">Wedding favors (dragees or local honey)</li>
-	  <li style="color: #ffffff;">Individual bags</li>
-	  <li style="color: #ffffff;">Metal straws</li>
-	  <li style="color: #ffffff;">Jar</li>
-	  <li style="color: #ffffff;">Lemonade stand cups</li>
-	  <li style="color: #ffffff;">Lemonade dispenser</li>
-	  <li style="color: #ffffff;">Chilled water dispenser</li>
-	  <li style="color: #ffffff;">Jute table runners</li>
-	  <li style="color: #ffffff;">Fans</li>
-	  <li style="color: #ffffff;">Individual tissues</li>
-	  <li style="color: #ffffff;">Parasols</li>
-	  <li style="color: #ffffff;">Empty vase for bridal bouquet</li>
-	  <li style="color: #ffffff;">Table vases</li>
-	  <li style="color: #ffffff;">White markers</li>
-	  <li style="color: #ffffff;">Chair bows</li>
-	  <li style="color: #ffffff;">Ribbon for Arch</li>
-	  <li style="color: #ffffff;">Lanterns</li>
-	  <li style="color: #ffffff;">Trestle and mirror</li>
-	  <li style="color: #ffffff;">Pampas grass and golden holly</li>
-	  <li style="color: #ffffff;">Dried flowers</li>
-	  <li style="color: #ffffff;">Table number photos</li>
-	  <td style="color: #ffffff;">Golden photo holders</li>
-	  <li style="color: #ffffff;">Place cards (pebbles or cards)</li>
-	  <li style="color: #ffffff;">Seating plan poster</li>
-	  <li style="color: #ffffff;">Photo QR code poster</li>
-	  <li style="color: #ffffff;">Parking sign poster</li>
-	  <li style="color: #ffffff;">Ladies' restroom basket</li>
-	  <li style="color: #ffffff;">Deodorant and wipes</li>
-	  <li style="color: #ffffff;">Extension cords (x3)</li>
-	  <li style="color: #ffffff;">Paper napkins for Brunch</li>
-	  <li style="color: #ffffff;">Envelopes for Guest Wall</li>
-	  <li style="color: #ffffff;">Adhesive putty (Sticky tack)</li>
-	  <li style="color: #ffffff;">Sewing kit and chalk</li>
-	</ul>
-	<div id="timeline-section"><h3><br><br>Inspirations<br></h3></div>
-	<div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; padding: 10px;">
-	  <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <img src="https://plus.unsplash.com/premium_photo-1676383424127-9903f6d1fd28?w=600&auto=format&fit=crop&q=60" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
-      <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <img src="https://images.unsplash.com/photo-1542617270-ca45a284c846?q=80&w=1171&auto=format&fit=crop" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
-      <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <img src="https://bergamotte.imgix.net/mm11fsjpg23gqi2xv42an28xe9vp?auto=format&fit=crop&w=850" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
-      <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <img src="https://plus.unsplash.com/premium_photo-1661645039233-6ad297af255d?q=80&w=687&auto=format&fit=crop" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
-	  <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <img src="https://images.unsplash.com/photo-1519092796169-bb9cc75a4b68?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
-      <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <img src="https://i.pinimg.com/1200x/f7/39/ae/f739ae8e74efa9027d0221e82021309d.jpg" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
-	  <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <img src="https://bergamotte.imgix.net/7it1akbwd4id7yyb6n9wnm5won9g?ixlib=rails-4.3.1&auto=format%2Ccompress&fit=crop&q=65&ar=4%3A5&w=850&dpr=1" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
-      <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <img src="https://i.pinimg.com/1200x/44/03/ec/4403ec1e47d4eb78c1727a650a5ae698.jpg" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
-	  <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <img src="https://i.pinimg.com/736x/6e/36/96/6e36963c6582786408b908ba111b8df3.jpg" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
-	  <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <img src="https://img.kwcdn.com/product/open/2023-12-17/1702805279892-c9e3a4d138a743908d4a35690131fb43-goods.jpeg?imageView2/2/w/800/q/70/format/avif" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
-	  <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <img src="https://i.pinimg.com/736x/4d/ec/e1/4dece10b9539a78c64b3178b637ae9e4.jpg" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
-	  <div style="flex: 0 0 calc(50% - 15px); aspect-ratio: 1 / 1; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        <img src="https://i.pinimg.com/1200x/93/80/0b/93800bf11dfe431c379fcb1f0ca1cb62.jpg" alt="Photo Mariage" style="width: 100%; height: 100%; object-fit: cover;">
       </div>
     </div>
   </div>
@@ -1218,7 +1137,7 @@
   
   <div id="seating-section" style="display: none; padding: 0 10px;">
     <div id="timeline-section"><h3>Seating Plan</h3></div>
-    <p style="text-align: center; font-size: 14px; color: #ffffff; font-style: italic; margin-bottom: 20px;">Provisional - Awaiting confirmations</p>
+    <p style="text-align: center; font-size: 14px; color: var(--vert); font-style: italic; margin-bottom: 20px;">Provisional - Awaiting confirmations</p>
 
     <div class="seating-grid">
       <div class="table-card honneur">
